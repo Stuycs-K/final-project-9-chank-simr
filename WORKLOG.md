@@ -1,10 +1,12 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Randy Sim
 
-### date x
+### 5/22/2023
 
-info
+- created MonoBehaviour Class/gameObject manager
+- setup core game engine structure
+- setup sprite rendering structure
 
 ### date y
 
