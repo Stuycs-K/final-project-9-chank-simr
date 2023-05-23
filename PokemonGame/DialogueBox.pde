@@ -6,6 +6,7 @@ public class DialogueBox extends UI {
     fill(255);
     rect(x, y, w, h);
     fill(0);
+    textSize(20);
     text(text, x+10, y+10, w-10, h-10);
   }
 
