@@ -22,7 +22,7 @@ void setup() {
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
-  UISys.add(new DialogueBox("hello", 0));
+  UISys.getScreenUI().add(new DialogueBox("hello", 0));
 
   /* INITIALIZE STARTING GAME OBJECTS */
 }
@@ -42,7 +42,7 @@ void draw() {
   }
 
   // draw UI
-  UISystem.render();
+  UISys.render();
 }
 
 void keyPressed() {

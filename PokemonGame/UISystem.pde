@@ -4,6 +4,10 @@ public class UISystem{
   public UISystem() {
     screenUI = new ArrayList<UI>();
   }
+  
+  public ArrayList<UI> getScreenUI() {
+    return screenUI;
+  }
 
   public void render() {
     for (UI element : screenUI) {
