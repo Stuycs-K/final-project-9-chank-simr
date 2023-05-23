@@ -6,9 +6,12 @@ public class Pokemon {
   private int attack;
   private int defense;
   private int speed;
-  private int health;
+  private int curHealth;
+  private int maxHealth;
   private ArrayList <Moves> pokemonMoves;
   private ArrayList <Moves> learnableMoves;
+  
+  //Constructor for Pokemon
   public Pokemon(Sprite img, String n, String t, int exp, int att, int def, int spe, int hp, ArrayList <Moves> curMoves, ArrayList <Moves>futMoves) {
     image = img;
     name = n;
@@ -17,11 +20,14 @@ public class Pokemon {
     attack = att;
     defense = def;
     speed = spe;
-    health = hp;
+    maxHealth = hp;
+    curHealth = maxHealth;
     pokemonMoves = curMoves;
     learnableMoves = futMoves;
   }
-  public Sprite getImg(){
+  
+  //Accessor methods for Pokemon
+  public Sprite getImg() {
     return image;
   }
   public String getName() {
@@ -30,31 +36,56 @@ public class Pokemon {
   public String getType() {
     return type;
   }
-  public int getXP(){
+  public int getXP() {
     return xp;
   }
-  public int getAtt(){
+  public int getAtt() {
     return attack;
   }
-  public int getDef(){
+  public int getDef() {
     return defense;
   }
-  public int getSpeed(){
+  public int getSpeed() {
     return speed;
   }
-  public int getHP(){
-    return health;
+  public int getCurHP() {
+    return curHealth;
   }
-  public ArrayList <Moves> getMoves(){
+  public int getMaxHP() {
+    return maxHealth;
+  }
+  public ArrayList <Moves> getMoves() {
     return pokemonMoves;
   }
-  public ArrayList <Moves> getFutMoves(){
+  public ArrayList <Moves> getFutMoves() {
     return learnableMoves;
   }
-  
-  public void decreaseHP(int amount) {
-    health -= amount;
+
+  //Mutator methods for Pokemon
+  public void changeName (String newName) {
+    name = newName;
   }
-  public void useNormalAttack(Pokemon foe) {
+  public void changeXP (int exp) {
+    xp = exp;
+  }
+  public void changeAtt (int att) {
+    attack = att;
+  }
+  public void changeDef (int def) {
+    defense = def;
+  }
+  public void changeSpeed (int spe) {
+    speed = spe;
+  }
+  public void changeCurHP (int curHP) {
+    curHealth = curHP;
+  }
+  public void changeMaxHP (int maxHP) {
+    maxHealth = maxHP;
+  }
+  
+  //applies the damage of a selected move on a Pokemon foe
+  public void useAttack(Pokemon foe, int moveNum) {
+    foe.changeCurHP(foe.getCurHP() - (getMoves().get(moveNum).getDmg() + getAtt()) );
   }
 }
