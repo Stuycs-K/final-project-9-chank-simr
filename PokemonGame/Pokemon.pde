@@ -78,6 +78,7 @@ public class Pokemon {
     speed = spe;
   }
   public void changeCurHP (int curHP) {
+    //need to implement speed(doding) and defense tomorrow
     curHealth = curHP;
   }
   public void changeMaxHP (int maxHP) {
