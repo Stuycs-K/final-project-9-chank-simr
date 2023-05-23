@@ -1,5 +1,5 @@
 public class UISystem{
-  ArrayList<UI> screenUI;
+  private ArrayList<UI> screenUI;
 
   public UISystem() {
     screenUI = new ArrayList<UI>();
