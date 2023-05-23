@@ -21,6 +21,7 @@
 -created UISystem class with ArrayList of UI
 -created subclasses DialogueBox and Button of parent UI
 
-### date y
+### 5/23/2023
 
-info
+-created Pokemon and Moves clases
+-created accessor and mutator methods for both classes
