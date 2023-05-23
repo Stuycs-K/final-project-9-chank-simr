@@ -3,7 +3,11 @@ public class UISystem{
   
   public UISystem() {
     screenUI = new ArrayList<UI>();
-  } 
+  }
+  
+  public UI get(int index){
+    return screenUI.get(index);
+  }
   
   public void add(UI element) {
     screenUI.add(element);

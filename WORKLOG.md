@@ -11,11 +11,12 @@ info
 info
 
 
-## GROUP MEMBER 2
+## Kevin Chan
 
-### date x
+### 5/22/23
 
-info
+-created UISystem class with ArrayList of UI
+-created subclasses DialogueBox and Button of parent UI
 
 ### date y
 
