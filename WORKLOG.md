@@ -18,10 +18,10 @@
 
 ### 5/22/23
 
--created UISystem class with ArrayList of UI
--created subclasses DialogueBox and Button of parent UI
+- created UISystem class with ArrayList of UI
+- created subclasses DialogueBox and Button of parent UI
 
 ### 5/23/2023
 
--created Pokemon and Moves clases
--created accessor and mutator methods for both classes
+- created Pokemon and Moves clases
+- created accessor and mutator methods for both classes
