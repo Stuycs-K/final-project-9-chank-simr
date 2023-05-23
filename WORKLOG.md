@@ -8,9 +8,10 @@
 - setup core game engine structure
 - setup sprite rendering structure
 
-### date y
+### 5/23/2023
 
-info
+- integrated UISystem with game engine.
+- setup player class with basic movement
 
 
 ## Kevin Chan
