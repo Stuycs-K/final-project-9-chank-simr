@@ -11,7 +11,7 @@
 ### 5/23/2023
 
 - integrated UISystem with game engine.
-- setup player class with basic movement
+- setup player class with basic movement (with walk delay)
 
 
 ## Kevin Chan
