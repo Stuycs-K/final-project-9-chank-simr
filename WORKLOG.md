@@ -13,6 +13,11 @@
 - integrated UISystem with game engine.
 - setup player class with basic movement (with walk delay)
 
+### 5/24/2023
+
+- better movement delay system.
+- created timings based on frames rather than milliseconds.
+
 
 ## Kevin Chan
 
