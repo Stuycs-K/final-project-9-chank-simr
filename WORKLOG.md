@@ -25,3 +25,8 @@
 
 - created Pokemon and Moves clases
 - created accessor and mutator methods for both classes
+
+### 5/24/2023
+
+- finished Pokemon class (without chances of dodging or retreating)
+- fixed button in UISystems
