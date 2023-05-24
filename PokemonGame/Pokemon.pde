@@ -78,7 +78,6 @@ public class Pokemon {
     speed = spe;
   }
   public void changeCurHP (int curHP) {
-    //need to implement speed(doding) and defense tomorrow
     curHealth = curHP;
   }
   public void changeMaxHP (int maxHP) {
@@ -87,6 +86,9 @@ public class Pokemon {
   
   //applies the damage of a selected move on a Pokemon foe
   public void useAttack(Pokemon foe, int moveNum) {
-    foe.changeCurHP(foe.getCurHP() - (getMoves().get(moveNum).getDmg() + getAtt()) );
+    int damage = getMoves().get(moveNum).getDmg() + getAtt();
+    if (damage > getDef()){
+      foe.changeCurHP(foe.getCurHP() + getDef() - (getMoves().get(moveNum).getDmg() + getAtt()) );
+    }
   }
 }

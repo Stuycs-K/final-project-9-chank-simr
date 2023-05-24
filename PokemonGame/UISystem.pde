@@ -11,6 +11,10 @@ public class UISystem{
   public UI get(int index){
     return screenUI.get(index);
   }
+  public UI remove (int index){
+    UI removed = screenUI.remove(index);
+    return removed;
+  }
   public int size(){
     return screenUI.size();
   }
