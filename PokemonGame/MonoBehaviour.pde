@@ -1,11 +1,11 @@
 public class MonoBehaviour {
-  private int x;
-  private int y;
+  protected int row;
+  protected int col;
   
-  public MonoBehaviour (int x, int y) {
+  public MonoBehaviour (int row, int col) {
     gameObjects.add(this);
-    this.x = x;
-    this.y = y;
+    this.row = row;
+    this.col = col;
   }
   
   public void update() {
@@ -13,13 +13,13 @@ public class MonoBehaviour {
   }
   
   public void keyPressed() {
-    
+  
   }
   
   public void render() {
   // default render is empty
   }
   
-  public int getX() { return x; }
-  public int getY() { return y; }
+  public int getRow() { return row; }
+  public int getCol() { return col; }
 }

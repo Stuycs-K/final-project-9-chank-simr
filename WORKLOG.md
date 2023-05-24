@@ -1,23 +1,27 @@
 # Work Log
 
-## GROUP MEMBER 1
+## Randy Sim
 
-### date x
+### 5/22/2023
 
-info
+- created MonoBehaviour Class/gameObject manager
+- setup core game engine structure
+- setup sprite rendering structure
 
-### date y
+### 5/23/2023
 
-info
+- integrated UISystem with game engine.
+- setup player class with basic movement (with walk delay)
 
 
 ## Kevin Chan
 
 ### 5/22/23
 
--created UISystem class with ArrayList of UI
--created subclasses DialogueBox and Button of parent UI
+- created UISystem class with ArrayList of UI
+- created subclasses DialogueBox and Button of parent UI
 
-### date y
+### 5/23/2023
 
-info
+- created Pokemon and Moves clases
+- created accessor and mutator methods for both classes

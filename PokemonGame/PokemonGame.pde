@@ -25,10 +25,14 @@ void setup() {
   UISys.getScreenUI().add(new DialogueBox("hello", 0));
 
   /* INITIALIZE STARTING GAME OBJECTS */
+  gameObjects.add(new Player(0, 0));
 }
 
 void draw() {
-
+  // clear screen
+  fill(0, 0, 0);
+  rect(0, 0, width, height);
+  
   // draw bg
   camera.read();
   camera.render();
