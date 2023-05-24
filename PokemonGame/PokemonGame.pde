@@ -5,7 +5,7 @@ Recreation of Unity APIs in Processing
 static UISystem UISys;
 
 ArrayList<MonoBehaviour> gameObjects;
-static int TILE_WIDTH = 60;
+static int TILE_WIDTH = 50;
 static int[][] tiles; // background
 static int[][] collisionMap; // map of just collisions
 
@@ -14,6 +14,7 @@ static Sprite[] sprites;
 
 void setup() {
   size(1200, 900);
+  frameRate(30);
   camera = new Camera(height/TILE_WIDTH, width/TILE_WIDTH);
   gameObjects = new ArrayList<MonoBehaviour>();
   sprites = new Sprite[]{
@@ -47,6 +48,8 @@ void draw() {
 
   // draw UI
   UISys.render();
+  fill(0, 255, 0);
+  text(frameRate, 20, 20);
 }
 
 void keyPressed() {
