@@ -1,5 +1,5 @@
 public class Button extends UI {
-  boolean clicked;
+  private boolean clicked;
   public Button(int xloc, int yloc, int wid, int hei, String info, int identifier){
     super(xloc, yloc, wid, hei, info, identifier);
     clicked = false;
@@ -10,7 +10,7 @@ public class Button extends UI {
     fill(0);
     text(text, x+10, y+10, w-10, h-10);
   }
-  void mouseClicked() {
+  public void clicked() {
     if (x<mouseX && mouseX<(x + w) && y<mouseY && mouseY<(y+h)) clicked = true;
   }
   public boolean isClicked(){
