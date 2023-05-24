@@ -1,7 +1,7 @@
 /*
 This is a recreation of Pokemon in Processing
-Recreation of Unity APIs in Processing
-*/
+ Recreation of Unity APIs in Processing
+ */
 static UISystem UISys;
 
 ArrayList<MonoBehaviour> gameObjects;
@@ -48,5 +48,11 @@ void draw() {
 void keyPressed() {
   for (MonoBehaviour gameObject : gameObjects) {
     gameObject.keyPressed();
+  }
+}
+
+void mouseClicked() {
+  for (int x=0; x<UISys.size(); x++) {
+    UISys.get(x).clicked();
   }
 }

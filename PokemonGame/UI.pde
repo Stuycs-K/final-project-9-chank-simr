@@ -18,5 +18,7 @@ public class UI {
   }
   public void draw(){
   }
+  public void clicked(){
+  }
   
 }

@@ -8,6 +8,12 @@ public class UISystem{
   public ArrayList<UI> getScreenUI() {
     return screenUI;
   }
+  public UI get(int index){
+    return screenUI.get(index);
+  }
+  public int size(){
+    return screenUI.size();
+  }
 
   public void render() {
     for (UI element : screenUI) {
