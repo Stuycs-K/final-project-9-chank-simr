@@ -1,20 +1,24 @@
 public class Button extends UI {
-  private boolean clicked;
-  public Button(int xloc, int yloc, int wid, int hei, String info, int identifier){
-    super(xloc, yloc, wid, hei, info, identifier);
-    clicked = false;
-  }
-  public void draw(){
-    fill(255);
-    rect(x, y, w, h);
-    fill(0);
-    text(text, x+10, y+10, w-10, h-10);
-  }
-  public void clicked() {
-    if (x<mouseX && mouseX<(x + w) && y<mouseY && mouseY<(y+h)) clicked = true;
-  }
-  public boolean isClicked(){
-    return clicked;
+  private String text;
+  private color c;
+  private Executable onclick;
+  
+  public Button(int x, int y, int w, int h, String text, color c, Executable onclick){
+    super(x, y, w, h);
+    this.text = text;
+    this.onclick = onclick;
+    this.c = c;
   }
   
+  public void draw(){
+    fill(c);
+    rect(x, y, w, h);
+    fill(0);
+    // center text
+    text(text, x+10, y+(h/2)-10, w-10, h-10);
+  }
+  
+  public void onClick() {
+    onclick.run();
+  }
 }

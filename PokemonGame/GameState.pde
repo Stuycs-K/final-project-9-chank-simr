@@ -2,7 +2,7 @@ public class GameState {
   public static final int DEFAULT = 0;
   public static final int BATTLE = 1;
   
-  protected ArrayList<MonoBehaviour> gameObjects;
+  protected ArrayList<MonoBehaviour> gameObjects; 
   
   /* UPDATE INIT GAME OBJECTS IN CONSTRUCTOR */
   public GameState() {
@@ -11,10 +11,6 @@ public class GameState {
   
   /* DRAW BASED ON GAMESTATE */
   public void draw() {
-  
-  }
-  
-  public void update() {
   
   }
   

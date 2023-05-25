@@ -34,11 +34,24 @@ void setup() {
   
   keyboardInput = new Controller();
   renderQueue = new PriorityQueue<Render>();
-  gameStates = new GameState[]{new DefaultGameState()};
+  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState()};
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
-  UISys.getScreenUI().add(new DialogueBox("hello", 0));
+  UISys.getScreenUI().add(new DialogueBox("hello"));
+  UISys.getScreenUI().add(
+    new Button(
+      10, 30, 100, 200, 
+      "Hello", 
+      color(255, 255, 255),
+      new Executable(){ 
+        public void run() {
+          println("HEY");
+          println("HI");
+        } 
+      } 
+     )
+   );
 }
 
 void draw() {

@@ -15,6 +15,27 @@ public class UISystem{
     UI removed = screenUI.remove(index);
     return removed;
   }
+  
+  public UI get(String id) {
+    for (UI ui : screenUI) {
+      if (ui.getId().equals(id)) return ui;
+    }
+    
+    println("UISystem.get(String id): invalid id provided");
+    return null;
+  }
+  
+  public UI remove(String id) {
+    for (int i = 0; i < screenUI.size(); ++i) {
+      if (screenUI.get(i).getId().equals(id)) {
+        return screenUI.remove(i);
+      }
+    }
+    
+    println("UISystem.remove(String id): invalid id provided");
+    return null;
+  }
+  
   public int size(){
     return screenUI.size();
   }
