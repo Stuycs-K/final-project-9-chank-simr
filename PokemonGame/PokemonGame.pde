@@ -59,7 +59,9 @@ void setup() {
   UISys.getScreenUI().add(new DialogueBox("hello", 0));
 
   /* INITIALIZE STARTING GAME OBJECTS */
-  player = new Player(2, 2);
+  player = new Player(2, 2, new Pokemon[] {
+    new Pokemon()
+  });
   gameObjects.add(player);
 }
 

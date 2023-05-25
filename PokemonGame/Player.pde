@@ -4,12 +4,14 @@ public class Player extends MonoBehaviour {
   private int[] lookVector;
   private final float walkDelay = 10; // in frames (game is 30fps)
   private Sprite playerSprite;
+  public Pokemon[] party;
   
-  public Player(int startingRow, int startingCol) {
+  public Player(int startingRow, int startingCol, Pokemon[] party) {
     super(startingRow, startingCol);
     lookVector = new int[]{1, 0}; // looking down
     walkProgress = walkDelay;
     playerSprite = getSprite("PLAYER");
+    this.party = party;
   }
   
   public void update() {
