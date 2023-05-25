@@ -1,3 +1,5 @@
+import java.util.PriorityQueue;
+
 /*
 This is a recreation of Pokemon in Processing
 Recreation of Unity APIs in Processing
@@ -6,13 +8,15 @@ static UISystem UISys;
 
 ArrayList<MonoBehaviour> gameObjects;
 static int TILE_WIDTH = 50;
-static int[][] tiles; // background
-static int[][] collisionMap; // map of just collisions
 
-static Camera camera;
-static Sprite[] sprites;
+Camera camera;
+Sprite[] sprites;
+
+PriorityQueue<Render> renderQueue;
 
 Controller keyboardInput;
+
+GameBoard map;
 
 void setup() {
   size(1200, 900);
@@ -21,6 +25,7 @@ void setup() {
   keyboardInput = new Controller();
   camera = new Camera(height/TILE_WIDTH, width/TILE_WIDTH);
   gameObjects = new ArrayList<MonoBehaviour>();
+  map = new GameBoard("DIRECTORYNAME");
   sprites = new Sprite[]{
 
   }; // sprites stored in memory
@@ -46,8 +51,18 @@ void draw() {
   for (MonoBehaviour gameObject : gameObjects) {
     gameObject.update();
 
-    // if game object is within camera
+    // if game object is within camera (replace this later)
     gameObject.render();
+  }
+  
+  // draw sorted renders
+  for (int i = 0; i < renderQueue.size(); ++i) {
+    Render r = renderQueue.remove();
+    image(
+      r.getSprite().getImage(), 
+      r.getCol() * TILE_WIDTH,
+      r.getRow() * TILE_WIDTH 
+    );
   }
 
   // draw UI
