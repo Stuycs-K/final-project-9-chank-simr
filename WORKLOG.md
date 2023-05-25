@@ -18,6 +18,15 @@
 - better movement delay system.
 - created timings based on frames rather than milliseconds.
 
+### 5/25/2023
+
+- fixed movement bug by creating custom Controller class
+- created a camera vision update system
+- created player centered movement
+- created GameBoard class with tiles + collision
+- created z-index based sprite rendering
+- created GameStates to accomodate different phases of the game.
+- created a debug class for on-screen debugging
 
 ## Kevin Chan
 
