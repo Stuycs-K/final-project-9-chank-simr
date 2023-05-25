@@ -17,6 +17,12 @@ public class GameBoard {
   public boolean[][] collisions;
   
   public GameBoard(String dir) {
+    
+  }
   
+  /* FOR TESTING ONLY */
+  public GameBoard(int[][] t, boolean[][] c) {
+    this.tiles = t;
+    this.collisions = c;
   }
 }

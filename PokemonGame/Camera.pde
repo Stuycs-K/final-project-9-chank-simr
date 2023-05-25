@@ -5,9 +5,22 @@ public class Camera {
     vision = new int[rows][cols];
   }
   
-  // read input based on the player's position
+  // read input based on the player's position, player is center of vision
+  // row and col will always be an odd number to accomodate
   public void read() {
-  
+    int r = player.getRow();
+    int c = player.getCol();
+    
+    int startRow = max(0, r - vision.length/2);
+    int endRow = min(map.tiles.length-1, r + vision.length/2);
+    int startCol = max(0, c - vision[0].length/2);
+    int endCol = min(map.tiles[0].length-1, c + vision[0].length/2);
+    
+    for (int i = startRow; i <= endRow; ++i) {
+      for (int k = startCol; k <= endCol; ++k) {
+        vision[i-startRow][k-startCol] = map.tiles[i][k];
+      }
+    }
   }
   
   // draw vision

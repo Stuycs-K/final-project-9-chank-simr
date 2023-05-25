@@ -3,11 +3,13 @@ public class Player extends MonoBehaviour {
   private float walkProgress; 
   private int[] lookVector;
   private final float walkDelay = 10; // in frames (game is 30fps)
+  private Sprite playerSprite;
   
   public Player(int startingRow, int startingCol) {
     super(startingRow, startingCol);
     lookVector = new int[]{1, 0}; // looking down
     walkProgress = walkDelay;
+    playerSprite = getSprite("PLAYER");
   }
   
   public void update() {
@@ -24,14 +26,8 @@ public class Player extends MonoBehaviour {
   }
   
   public void render() {
-    // render player sprite
-    fill(255, 0, 0);
-    rect(
-      (col + (1 - (walkProgress / walkDelay)) * lookVector[1]) * TILE_WIDTH, 
-      (row + (1 - (walkProgress / walkDelay)) * lookVector[0]) * TILE_WIDTH, 
-      TILE_WIDTH, 
-      TILE_WIDTH
-    );
+    // render player sprite at the center of the screen
+    playerSprite.render((camera.getVision().length / 2) + 1, (camera.getVision()[0].length / 2) + 1);
   }
   
   public void move() {
