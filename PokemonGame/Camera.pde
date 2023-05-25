@@ -17,7 +17,6 @@ public class Camera {
     
     for (int r = 0; r <= centerRow; ++r) {
       for (int c = 0; c <= centerCol; ++c) {
-        System.out.println(r + " " + c);
         // top left
         if (pRow - r >= 0 && pCol - c >= 0) {
           vision[centerRow-r][centerCol-c] = map.tiles[pRow-r][pCol-c];
