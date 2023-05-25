@@ -7,9 +7,14 @@ public class Player extends MonoBehaviour {
   
   public Player(int startingRow, int startingCol) {
     super(startingRow, startingCol);
-    lookVector = new int[]{1, 0}; // looking down
-    walkProgress = walkDelay;
-    playerSprite = getSprite("PLAYER");
+    
+    if (player == null) {
+      lookVector = new int[]{1, 0}; // looking down
+      walkProgress = walkDelay;
+      playerSprite = getSprite("PLAYER");
+    } else {
+      println("Error: instance of Player already exists");
+    }
   }
   
   public void update() {

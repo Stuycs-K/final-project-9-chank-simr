@@ -1,10 +1,10 @@
-public class Moves{
+public class Move{
   private String name;
   private String type;
   private int damage;
   
   //Constructor for moves
-  public Moves(String n, String t, int dmg){
+  public Move(String n, String t, int dmg){
     name = n;
     type = t;
     damage = dmg;
