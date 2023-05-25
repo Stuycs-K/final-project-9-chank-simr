@@ -30,18 +30,22 @@ void setup() {
   gameObjects = new ArrayList<MonoBehaviour>();
   map = new GameBoard(
     new int[][] {
-      {0, 0, 0, 0, 0},
-      {0, 2, 2, 2, 0},
-      {0, 2, 2, 2, 0},
-      {0, 2, 2, 2, 0},
-      {0, 0, 0, 0, 0}
+      {0, 0, 0, 0, 0, 0, 0, 0},
+      {0, 2, 2, 2, 2, 2, 2, 0},
+      {0, 2, 2, 2, 2, 2, 2, 0},
+      {0, 2, 2, 2, 2, 2, 2, 0},
+      {0, 2, 2, 2, 2, 2, 2, 0},
+      {0, 2, 2, 2, 2, 2, 2, 0},
+      {0, 0, 0, 0, 0, 0, 0, 0}
     },
     new boolean[][] {
-      {true, true, true, true, true},
-      {true, false, false, false, true},
-      {true, false, false, false, true},
-      {true, false, false, false, true},
-      {true, true, true, true, true}
+      {true, true, true, true, true, true, true, true},
+      {true, false, false, false, false, false, false, true},
+      {true, false, false, false, false, false, false, true},
+      {true, false, false, false, false, false, false, true},
+      {true, false, false, false, false, false, false, true},
+      {true, false, false, false, false, false, false, true},
+      {true, true, true, true, true, true, true, true}
     }
   );
   /* Sprite(resource_url, name, width, height, zIndex, hex) */
@@ -68,12 +72,9 @@ void draw() {
   camera.read();
   camera.render();
 
-  // draw gameobjects
+  // update gameobjects, render gameobjects in camera
   for (MonoBehaviour gameObject : gameObjects) {
     gameObject.update();
-
-    // if game object is within camera (replace this later)
-    gameObject.render();
   }
   
   // draw sorted renders

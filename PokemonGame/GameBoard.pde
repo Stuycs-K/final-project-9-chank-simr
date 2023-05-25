@@ -25,4 +25,17 @@ public class GameBoard {
     this.tiles = t;
     this.collisions = c;
   }
+  
+  public boolean canWalkOn(int r, int c) {
+    // out of bounds check
+    if (
+      r < 0 ||
+      r >= tiles.length ||
+      c < 0 || 
+      c >= tiles[0].length
+    ) return false;
+    
+    // collision check
+    return !collisions[r][c];
+  }
 }

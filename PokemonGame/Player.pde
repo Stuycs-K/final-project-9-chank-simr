@@ -27,7 +27,7 @@ public class Player extends MonoBehaviour {
   
   public void render() {
     // render player sprite at the center of the screen
-    playerSprite.render((camera.getVision().length / 2) + 1, (camera.getVision()[0].length / 2) + 1);
+    playerSprite.render(camera.getVision().length / 2, camera.getVision()[0].length / 2);
   }
   
   public void move() {
@@ -53,6 +53,14 @@ public class Player extends MonoBehaviour {
       lookVector[0] = 0;
       lookVector[1] = min(lookVector[1] + 1, 1);
       moving = true;
+    }
+    
+    // collision detection)
+    if (moving) {
+      int endRow = row + lookVector[0];
+      int endCol = col + lookVector[1];
+      
+      if (!map.canWalkOn(endRow, endCol)) moving = false;
     }
   }
 }
