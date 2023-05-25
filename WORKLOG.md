@@ -13,6 +13,11 @@
 - integrated UISystem with game engine.
 - setup player class with basic movement (with walk delay)
 
+### 5/24/2023
+
+- better movement delay system.
+- created timings based on frames rather than milliseconds.
+
 
 ## Kevin Chan
 
@@ -25,3 +30,8 @@
 
 - created Pokemon and Moves clases
 - created accessor and mutator methods for both classes
+
+### 5/24/2023
+
+- finished Pokemon class (without chances of dodging or retreating)
+- fixed button in UISystems
