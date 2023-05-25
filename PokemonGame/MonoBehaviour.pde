@@ -12,10 +12,6 @@ public class MonoBehaviour {
   
   }
   
-  public void keyPressed() {
-  
-  }
-  
   public void render() {
   // default render is empty
   }

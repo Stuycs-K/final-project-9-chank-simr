@@ -11,11 +11,11 @@ public class Player extends MonoBehaviour {
   }
   
   public void update() {
+    move();
     if (moving) {
       walkProgress--;
       if (walkProgress <= 0) {
         moving = false;
-        println("UPDATE SAYS MOVING IS " + moving);
         walkProgress = walkDelay;
         col += lookVector[1];
         row += lookVector[0];
@@ -34,44 +34,29 @@ public class Player extends MonoBehaviour {
     );
   }
   
-  public void keyPressed() {
-    look();
-    move();
-  }
-  
   public void move() {
     if (moving) return;
-
-    switch(key) {
-      case 'w':
-      case 'a':
-      case 's':
-      case 'd':
-        moving = true;
-        break;
-    }
-  }
-  
-  public void look() {
-    if (moving) return;
     
-    switch (key) {
-      case 'w':
-        lookVector[0] = -1;
-        lookVector[1] = 0;
-        break;
-      case 'a':
-        lookVector[0] = 0;
-        lookVector[1] = -1;
-        break;
-      case 's':
-        lookVector[0] = 1;
-        lookVector[1] = 0;
-        break;
-      case 'd':
-        lookVector[0] = 0;
-        lookVector[1] = 1;
-        break;
+    /* LOOK CODE */
+    if (keyboardInput.isPressed(keyboardInput.PUP)) {
+      lookVector[0] = max(lookVector[0] - 1, -1);
+      lookVector[1] = 0;
+      moving = true;
+    }
+    if (keyboardInput.isPressed(keyboardInput.PLEFT)) {
+      lookVector[0] = 0;
+      lookVector[1] = max(lookVector[1] - 1, -1);
+      moving = true;
+    }
+    if (keyboardInput.isPressed(keyboardInput.PDOWN)) {
+      lookVector[0] = min(lookVector[0] + 1, 1);
+      lookVector[1] = 0;
+      moving = true;
+    }
+    if (keyboardInput.isPressed(keyboardInput.PRIGHT)) {
+      lookVector[0] = 0;
+      lookVector[1] = min(lookVector[1] + 1, 1);
+      moving = true;
     }
   }
 }
