@@ -8,22 +8,19 @@ public class Pokemon {
   private int speed;
   private int curHealth;
   private int maxHealth;
-  private ArrayList <Moves> pokemonMoves;
-  private ArrayList <Moves> learnableMoves;
+  private ArrayList <Move> pokemonMoves;
+  private ArrayList <Move> learnableMoves;
   
   //Constructor for Pokemon
-  public Pokemon(Sprite img, String n, String t, int exp, int att, int def, int spe, int hp, ArrayList <Moves> curMoves, ArrayList <Moves>futMoves) {
+  public Pokemon(Sprite img, String n, int att, int def, int spe, int hp, ArrayList <Move> curMoves) {
     image = img;
     name = n;
-    type = t;
-    xp = exp;
     attack = att;
     defense = def;
     speed = spe;
     maxHealth = hp;
     curHealth = maxHealth;
     pokemonMoves = curMoves;
-    learnableMoves = futMoves;
   }
   
   //Accessor methods for Pokemon
@@ -54,10 +51,10 @@ public class Pokemon {
   public int getMaxHP() {
     return maxHealth;
   }
-  public ArrayList <Moves> getMoves() {
+  public ArrayList <Move> getMoves() {
     return pokemonMoves;
   }
-  public ArrayList <Moves> getFutMoves() {
+  public ArrayList <Move> getFutMoves() {
     return learnableMoves;
   }
 
@@ -90,5 +87,9 @@ public class Pokemon {
     if (damage > getDef()){
       foe.changeCurHP(foe.getCurHP() + getDef() - (getMoves().get(moveNum).getDmg() + getAtt()) );
     }
+  }
+  
+  public Pokemon copy() {
+    return new Pokemon(image, name, attack, defense, speed, maxHealth, pokemonMoves);
   }
 }
