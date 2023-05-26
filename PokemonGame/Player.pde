@@ -4,12 +4,18 @@ public class Player extends MonoBehaviour {
   private int[] lookVector;
   private final float walkDelay = 10; // in frames (game is 30fps)
   private Sprite playerSprite;
+  private boolean pause = false;
   
   public Player(int startingRow, int startingCol) {
     super(startingRow, startingCol);
-    lookVector = new int[]{1, 0}; // looking down
-    walkProgress = walkDelay;
-    playerSprite = getSprite("PLAYER");
+    
+    if (player == null) {
+      lookVector = new int[]{1, 0}; // looking down
+      walkProgress = walkDelay;
+      playerSprite = getSprite("PLAYER");
+    } else {
+      println("Error: instance of Player already exists");
+    }
   }
   
   public void update() {
@@ -31,7 +37,7 @@ public class Player extends MonoBehaviour {
   }
   
   public void move() {
-    if (moving) return;
+    if (moving || pause) return;
     
     /* LOOK CODE */
     if (keyboardInput.isPressed(keyboardInput.PUP)) {
@@ -63,4 +69,7 @@ public class Player extends MonoBehaviour {
       if (!map.canWalkOn(endRow, endCol)) moving = false;
     }
   }
+  
+  public void pause() { pause = true; }
+  public void unpause() { pause = false; }
 }

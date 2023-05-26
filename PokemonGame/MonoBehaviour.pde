@@ -3,7 +3,6 @@ public class MonoBehaviour {
   protected int col;
   
   public MonoBehaviour (int row, int col) {
-    gameObjects.add(this);
     this.row = row;
     this.col = col;
   }
