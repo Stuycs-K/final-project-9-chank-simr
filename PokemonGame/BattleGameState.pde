@@ -51,7 +51,7 @@ public class BattleGameState extends GameState {
     
     // find first alive player pokemon
     for (int i = 0; i < player.getPokemon().length; ++i) {
-      if (player.getPokemon()[i].getHP() > 0) {
+      if (player.getPokemon()[playerPokemonOut].getHP() > 0) {
         playerPokemonOut = i;
         break;
       }
@@ -74,6 +74,7 @@ public class BattleGameState extends GameState {
   
   private void battleLoop() {
     if (battleProgress % 2 == 0) {
+      setupEffects = false;
       if (!renderingButtons) {
         for (Button b : moveButtons) {
           UISys.getScreenUI().add(b);
@@ -84,24 +85,115 @@ public class BattleGameState extends GameState {
       renderingButtons = false;
       // action display (whichever has more speed goes first)
       
-      Pokemon enemyPokemon = getEnemyPokemon();
+      Pokemon enemy = getEnemyPokemon();
       Pokemon playerPokemon = player.getPokemon()[playerPokemonOut];
       
-      boolean playerFaster = playerPokemon.getSpeed() > enemyPokemon.getSpeed();
-      if (playerPokemon.getSpeed() == enemyPokemon.getSpeed()) {
+      boolean playerFaster = true; // let this always be true for now
+      // boolean playerFaster = playerPokemon.getSpeed() > enemy.getSpeed();
+      /*
+      if (playerPokemon.getSpeed() == enemy.getSpeed()) {
         playerFaster = (int) (Math.random() * 2) == 1; // random pick
       }
+      */
       
       // setup 
+      if (!setupEffects) {
+        
+        if (playerFaster) {
+          
+          DialogueBox attackBox = new DialogueBox(
+            playerPokemon.getName() + " used " + previousMove.getName() + "!",
+            new Executable() {
+              public void run() {
+                playerPokemon.useAttack(enemy, previousMove);
+                
+                if (enemy.getHP() <= 0) {
+                  // dead
+                  if (isAlive(enemyPokemon)) {
+                    // pick next alive (does automatically!)
+                    UISys.getScreenUI().add(
+                      new DialogueBox(
+                        enemyName + " sent out " + getEnemyPokemon().getName() + "!",
+                        new Executable() {
+                          public void run() { battleProgress++; }
+                        }
+                      )
+                    );
+                  } else {
+                    UISys.getScreenUI().add(
+                      new DialogueBox(
+                        "Player has beat " + enemyName + "!",
+                        new Executable() {
+                          public void run(){ end(); }
+                        }
+                      )
+                    );
+                  }
+                } else {
+                  // enemy moves back
+                  // make sure it picks a valid move (enemy can have 4 moves some can be null)
+                  Move enemyMove = null;
+                  do {
+                     enemyMove = enemy.getMoves()[(int) (Math.random() * 4)];
+                  } while (enemyMove == null);
+                  
+                  
+                  enemy.useAttack(playerPokemon, enemyMove);
+                  
+                  UISys.getScreenUI().add(
+                    new DialogueBox(
+                      "ENEMY: " + enemy.getName() + " used " + enemyMove.getName() + "!",
+                      new Executable() {
+                        public void run() {
+                          if (playerPokemon.getHP() <= 0) {
+                            // dead
+                            if (isAlive(player.getPokemon())) {
+                              /* SEND TO POKEMON SELECT MENU, BUT FOR NOW JUST RANDOMLY PICK */
+                              for (int i = 0; i < player.getPokemon().length; ++i) {
+                                if (player.getPokemon()[playerPokemonOut].getHP() > 0) {
+                                  playerPokemonOut = i;
+                                  break;
+                                }
+                              }
+                              
+                              UISys.getScreenUI().add(
+                                new DialogueBox(
+                                  "Player sent out " + player.getPokemon()[playerPokemonOut].getName() + "!"
+                                )
+                              );
+                            } else {
+                              UISys.getScreenUI().add(
+                                new DialogueBox(
+                                  "Player blacked out!",
+                                  new Executable() {
+                                    public void run() {  end(); }
+                                  }
+                                )
+                              );
+                            }
+                          }
+                          battleProgress++;
+                        }
+                      }
+                    )
+                  );
+                }
+              }
+            }
+          );
+          
+          UISys.getScreenUI().add(attackBox);
+          
+        }
+        
+        setupEffects = true;
+      }
     }
   }
   
   
   
   private void selectMove(Move move) {
-    // apply damage
-    Pokemon enemyAlive = getEnemyPokemon();
-    
     // player.getPokemon()[playerPokemonOut].useAttack(enemyAlive, move); <- DO THIS IN THE NEXT TURN BASED ON SPEED
     
     // clear move buttons from ui

@@ -99,7 +99,10 @@ public class Pokemon {
   
   //applies the damage of a selected move on a Pokemon foe
   public void useAttack(Pokemon foe, Move move) {
-    int damage = move.getDamage() + getAttack();
+    int damage = 0;
+    try {
+      damage = move.getDamage() + getAttack();
+    } catch (NullPointerException e) { e.printStackTrace(); }
 
     foe.setHP(foe.getHP() + getDefense() - damage);
   }

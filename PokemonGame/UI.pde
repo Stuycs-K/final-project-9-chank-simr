@@ -16,6 +16,7 @@ public class UI {
     do {
       this.id = "" + ((int) (Math.random() * 10000));
       for (UI ui : UISys.getScreenUI()) {
+        if (ui == null) continue;
         if (ui.getId() == this.id) {
           idExists = true;
           break;
