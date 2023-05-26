@@ -44,3 +44,8 @@
 
 - finished Pokemon class (without chances of dodging or retreating)
 - fixed button in UISystems
+
+### 5/25/2023
+
+- pushed some changes to Pokemon class to branch but chose not to merge
+- created NPC class
