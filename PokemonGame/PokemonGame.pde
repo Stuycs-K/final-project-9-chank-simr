@@ -136,7 +136,8 @@ Sprite getSprite(String n) {
 }
 
 void mouseClicked() {
-  for (int x=0; x<UISys.size(); x++) {
+  for (int x=0; x < UISys.size(); x++) {
+    if (UISys.get(x) == null) continue;
     UISys.get(x).clicked();
   }
 }

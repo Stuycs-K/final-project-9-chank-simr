@@ -92,6 +92,7 @@ public class BattleGameState extends GameState {
     
     // clear move buttons from ui
     for (Button b : moveButtons) {
+      if (b == null) continue;
       UISys.remove(b.getId());
     }
   }
