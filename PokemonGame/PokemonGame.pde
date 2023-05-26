@@ -38,7 +38,20 @@ void setup() {
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
-  UISys.getScreenUI().add(new DialogueBox("hello"));
+  UISys.getScreenUI().add(
+    new DialogueBox(
+      "hello",
+      new Executable() {
+        public void run() {
+          UISys.getScreenUI().add(
+            new DialogueBox(
+              "This is the end of the dialogue"
+            )
+          );
+        }
+      }
+    )
+  );
   UISys.getScreenUI().add(
     new Button(
       10, 30, 100, 200, 
@@ -75,8 +88,12 @@ void draw() {
   // draw UI
   UISys.render();
   
+  // update frame count
+  keyboardInput.update();
+  
   // debug
   debug.log("FRAMERATE: " + frameRate);
+  debug.log("SCREEN_UI: " + UISys.getScreenUI().size());
   debug.tick();
 }
 
