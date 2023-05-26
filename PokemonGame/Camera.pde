@@ -57,7 +57,7 @@ public class Camera {
     }
     
     /* RENDER GAMEOBJECTS */
-    for (MonoBehaviour obj : gameObjects) {
+    for (MonoBehaviour obj : gameStates[gameState].getGameObjects()) {
        obj.render();
     }
   }
