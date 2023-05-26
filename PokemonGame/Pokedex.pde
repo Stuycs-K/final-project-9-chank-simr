@@ -7,7 +7,7 @@ public class Pokedex {
       new Move("Thunderbolt", "ELECTRIC", 20)
     };
     pokemon = new Pokemon[]{
-      new Pokemon(getSprite("PLAYER"), "Pikachu", 50, 50, 50, 100, new ArrayList<Move>(){{ add(getMove("Thunderbolt")); }})
+      new Pokemon(getSprite("PLAYER"), "Pikachu", 50, 50, 50, 100, new Move[]{ getMove("Thunderbolt") })
     };
   }
   
@@ -20,7 +20,7 @@ public class Pokedex {
   
   public Pokemon getPokemon(String name) {
     for (Pokemon p : pokemon) {
-      if (p.getName().equals(name)) return p;
+      if (p.getName().equals(name)) return p.copy();
     }
     return null;
   }

@@ -5,6 +5,7 @@ public class Player extends MonoBehaviour {
   private final float walkDelay = 10; // in frames (game is 30fps)
   private Sprite playerSprite;
   private boolean pause = false;
+  private Pokemon[] party;
   
   public Player(int startingRow, int startingCol) {
     super(startingRow, startingCol);
@@ -13,6 +14,7 @@ public class Player extends MonoBehaviour {
       lookVector = new int[]{1, 0}; // looking down
       walkProgress = walkDelay;
       playerSprite = getSprite("PLAYER");
+      party = new Pokemon[]{pokedex.getPokemon("Pikachu")};
     } else {
       println("Error: instance of Player already exists");
     }
@@ -72,4 +74,6 @@ public class Player extends MonoBehaviour {
   
   public void pause() { pause = true; }
   public void unpause() { pause = false; }
+  
+  public Pokemon[] getPokemon() { return party; }
 }
