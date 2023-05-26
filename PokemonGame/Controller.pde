@@ -66,6 +66,7 @@ public class Controller {
     if (inputsDown[PLEFT]) inputsDown[PLEFT] = false;
     if (inputsDown[PDOWN]) inputsDown[PDOWN] = false;
     if (inputsDown[PRIGHT]) inputsDown[PRIGHT] = false;
+    if (inputsDown[PSPACE]) inputsDown[PSPACE] = false;
     if (inputsDown[PE]) inputsDown[PE] = false;
   }
 }

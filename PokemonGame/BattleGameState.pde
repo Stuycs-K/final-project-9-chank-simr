@@ -11,6 +11,11 @@ public class BattleGameState extends GameState {
   private int playerPokemonOut = 0; // index of pokemon out
   
   private Button[] moveButtons;
+  private boolean renderingButtons = false;
+  private Move previousMove;
+  
+  /* EFFECT VARIABLES */
+  private boolean setupEffects = false;
   
   public BattleGameState() {
     super();
@@ -69,32 +74,44 @@ public class BattleGameState extends GameState {
   
   private void battleLoop() {
     if (battleProgress % 2 == 0) {
-      for (Button b : moveButtons) {
-        UISys.getScreenUI().add(b);
+      if (!renderingButtons) {
+        for (Button b : moveButtons) {
+          UISys.getScreenUI().add(b);
+        }
+        renderingButtons = true;
       }
     } else {
+      renderingButtons = false;
       // action display (whichever has more speed goes first)
+      
+      Pokemon enemyPokemon = getEnemyPokemon();
+      Pokemon playerPokemon = player.getPokemon()[playerPokemonOut];
+      
+      boolean playerFaster = playerPokemon.getSpeed() > enemyPokemon.getSpeed();
+      if (playerPokemon.getSpeed() == enemyPokemon.getSpeed()) {
+        playerFaster = (int) (Math.random() * 2) == 1; // random pick
+      }
+      
+      // setup 
     }
   }
   
+  
+  
   private void selectMove(Move move) {
     // apply damage
-    Pokemon enemyAlive = enemyPokemon[0];
-    // find first alive pokemon of enemy
-    for (int i = 0; i < enemyPokemon.length; ++i) {
-      if (enemyPokemon[i].getHP() > 0) {
-        enemyAlive = enemyPokemon[i];
-        break;
-      }
-    }
+    Pokemon enemyAlive = getEnemyPokemon();
     
-    player.getPokemon()[playerPokemonOut].useAttack(enemyAlive, move);
+    // player.getPokemon()[playerPokemonOut].useAttack(enemyAlive, move); <- DO THIS IN THE NEXT TURN BASED ON SPEED
     
     // clear move buttons from ui
     for (Button b : moveButtons) {
       if (b == null) continue;
       UISys.remove(b.getId());
     }
+    
+    previousMove = move;
+    battleProgress++;
   }
   
   private void setPokemonMoves(Pokemon p) {
@@ -130,4 +147,17 @@ public class BattleGameState extends GameState {
       if (pokemon.getHP() > 0) return true;
     return false;
   }
+  
+  private Pokemon getEnemyPokemon() {
+    Pokemon enemyAlive = enemyPokemon[0];
+    // find first alive pokemon of enemy
+    for (int i = 0; i < enemyPokemon.length; ++i) {
+      if (enemyPokemon[i].getHP() > 0) {
+        enemyAlive = enemyPokemon[i];
+        break;
+      }
+    }
+    
+    return enemyAlive;
+  } 
 }

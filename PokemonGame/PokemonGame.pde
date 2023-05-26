@@ -58,6 +58,7 @@ void setup() {
       }
     )
   );
+  
   UISys.getScreenUI().add(
     new Button(
       10, 30, 100, 200, 
@@ -71,7 +72,8 @@ void setup() {
       } 
      )
    );
-  */
+   */
+  
   
   /* DEBUG */
   /* TEST BATTLES */
@@ -115,7 +117,7 @@ void draw() {
   
   // debug
   debug.log("FRAMERATE: " + frameRate);
-  debug.log("SCREEN_UI: " + UISys.getScreenUI().size());
+  debug.log("SCREEN_UI: " + UISys);
   debug.tick();
 }
 
