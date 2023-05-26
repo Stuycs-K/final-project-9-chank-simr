@@ -19,6 +19,7 @@ public class Player extends MonoBehaviour {
   }
   
   public void update() {
+    interact();
     move();
     if (moving) {
       walkProgress--;
@@ -68,6 +69,16 @@ public class Player extends MonoBehaviour {
       
       if (!map.canWalkOn(endRow, endCol)) moving = false;
     }
+  }
+  
+  private void interact() {
+    if (!keyboardInput.isDown(Controller.PE)){
+      if (npc is == lookVector){
+        NPC.interact();
+      }
+    }
+    
+    /* CHECK IF PLAYER IS NEXT TO NPC, THEN CHECK IF PLAYER IS LOOKING AT NPC, IF SO, INTERACT WITH NPC*/
   }
   
   public void pause() { pause = true; }
