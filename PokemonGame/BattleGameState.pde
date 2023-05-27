@@ -1,5 +1,8 @@
 /* PLAYER WILL ALWAYS FIGHT NPC-CONTROLLED POKEMON */
 /* THE PLAYER'S FIRST POKEMON WILL ALWAYS GO OUT FIRST */
+/*
+TODO: add health rendering + pokemon sprites
+*/
 
 public class BattleGameState extends GameState {
   private Pokemon[] enemyPokemon; /* THE POKEMON OUT IS THE FIRST IN THE ARRAY*/
