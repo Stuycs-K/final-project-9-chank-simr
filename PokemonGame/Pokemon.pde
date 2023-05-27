@@ -8,11 +8,11 @@ public class Pokemon {
   private int speed;
   private int health;
   private int maxHealth;
-  private ArrayList <Move> pokemonMoves;
+  private Move[] pokemonMoves;
   private ArrayList <Move> learnableMoves;
   
   //Constructor for Pokemon
-  public Pokemon(Sprite image, String name, int attack, int defense, int speed, int maxHealth, ArrayList <Move> pokemonMoves) {
+  public Pokemon(Sprite image, String name, int attack, int defense, int speed, int maxHealth, Move[] pokemonMoves) {
     this.image = image;
     this.name = name;
     this.attack = attack;
@@ -20,7 +20,14 @@ public class Pokemon {
     this.speed = speed;
     this.maxHealth = maxHealth;
     this.health = maxHealth;
-    this.pokemonMoves = pokemonMoves;
+    this.pokemonMoves = new Move[4];
+    if (pokemonMoves.length > 4) {
+      System.out.println("Error: Pokemon can only have 4 moves");
+    }
+    
+    for (int i = 0; i < min(pokemonMoves.length, 4); ++i) {
+      this.pokemonMoves[i] = pokemonMoves[i];
+    }
     // type = type;
     // xp = xp;
     
@@ -49,7 +56,7 @@ public class Pokemon {
   public int getMaxHP() {
     return maxHealth;
   }
-  public ArrayList <Move> getMoves() {
+  public Move[] getMoves() {
     return pokemonMoves;
   }
   /*
@@ -91,10 +98,16 @@ public class Pokemon {
   }
   
   //applies the damage of a selected move on a Pokemon foe
-  public void useAttack(Pokemon foe, int moveNum) {
-    int damage = getMoves().get(moveNum).getDmg() + getAttack();
-    if (damage > getDefense()){
-      foe.setHP(foe.getHP() + getDefense() - (getMoves().get(moveNum).getDmg() + getAttack()) );
-    }
+  public void useAttack(Pokemon foe, Move move) {
+    int damage = 0;
+    try {
+      damage = move.getDamage() + getAttack();
+    } catch (NullPointerException e) { e.printStackTrace(); }
+
+    foe.setHP(max(foe.getHP() + getDefense() - damage, 0));
+  }
+  
+  public Pokemon copy() {
+    return new Pokemon(image, name, attack, defense, speed, maxHealth, pokemonMoves);
   }
 }

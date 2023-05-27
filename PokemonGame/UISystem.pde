@@ -27,6 +27,7 @@ public class UISystem{
   
   public UI remove(String id) {
     for (int i = 0; i < screenUI.size(); ++i) {
+      if (screenUI.get(i) == null) continue;
       if (screenUI.get(i).getId().equals(id)) {
         return screenUI.remove(i);
       }
@@ -43,8 +44,27 @@ public class UISystem{
   public void render() {
     // iterate backwards incase ui tries to remove itself
     for (int i = screenUI.size()-1; i >= 0; --i) {
+      if (i > screenUI.size()-1) continue;
+      
       UI ui = screenUI.get(i);
+      if (ui == null) continue;
       ui.draw();
     }
+  }
+  
+  public String toString() {
+    String returnStr = "";
+    
+    for (int i = 0; i < screenUI.size(); ++i) {
+      if (screenUI.get(i) == null) continue;
+      String name = screenUI.get(i).getClass().getName();
+      if (i == screenUI.size() - 1) {
+        returnStr += name;
+      } else {
+        returnStr += name + ", ";
+      }
+    }
+    
+    return "{" + returnStr + "}";
   }
 }

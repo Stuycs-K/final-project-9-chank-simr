@@ -46,7 +46,9 @@ public class Camera {
         for (Sprite s : sprites) {
           if (s.getHex() == vision[r][c]) {
             foundSprite = true;
-            s.render(r, c);
+            
+            /* render based on walk delays */
+            s.render(r - ((1 - player.getWalkProgress()) * player.getLookVector()[0]), c - ((1 - player.getWalkProgress())) * player.getLookVector()[1]);
           }
         }
         

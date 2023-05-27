@@ -15,6 +15,7 @@ public class Debug {
     if (!ACTIVE) return;
     
     if (debugString.length() > 0) {
+      textSize(20);
       fill(0, 255, 0);
       text(debugString, 20, 20);
       debugString = "";
