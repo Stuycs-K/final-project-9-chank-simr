@@ -26,7 +26,12 @@
 - created GameBoard class with tiles + collision
 - created z-index based sprite rendering
 - created GameStates to accomodate different phases of the game.
-- created a debug class for on-screen debugging
+- created a debug class for on-screen debug messages
+
+### 5/26/2023
+
+- created advanced ui's with callback functions
+- created the BattleGameState (manage/render battles)
 
 ## Kevin Chan
 
