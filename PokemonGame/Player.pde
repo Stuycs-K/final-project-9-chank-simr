@@ -2,7 +2,7 @@ public class Player extends MonoBehaviour {
   private boolean moving;
   private float walkProgress; 
   private int[] lookVector;
-  private final float walkDelay = 10; // in frames (game is 30fps)
+  private final float walkDelay = 5; // in frames (game is 30fps)
   private Sprite playerSprite;
   private boolean pause = false;
   private Pokemon[] party;
@@ -76,4 +76,7 @@ public class Player extends MonoBehaviour {
   public void unpause() { pause = false; }
   
   public Pokemon[] getPokemon() { return party; }
+  
+  public float getWalkProgress() { return walkProgress / walkDelay; }
+  public int[] getLookVector() { return lookVector; }
 }
