@@ -84,7 +84,7 @@ void setup() {
       color(255, 255, 255),
       new Executable() {
         public void run() {
-          ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
+          ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
         }
       }
     )
