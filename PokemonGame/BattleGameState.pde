@@ -45,6 +45,26 @@ public class BattleGameState extends GameState {
   }
   
   public void start(Pokemon[] enemyPokemon, String enemyName) {
+    if (!isAlive(player.getPokemon())) {
+      UISys.getScreenUI().add(
+        new DialogueBox(
+          "All your pokemon are dead, cannot battle"
+        )
+      );
+      
+      return;
+    }
+    
+    if (!isAlive(enemyPokemon)) {
+      UISys.getScreenUI().add(
+        new DialogueBox(
+          "Enemy has no usable pokemon to battle"
+        )
+      );
+      
+      return;
+    }
+    
     this.enemyPokemon = enemyPokemon;
     this.enemyName = enemyName;
     gameState = GameState.BATTLE;
@@ -64,7 +84,14 @@ public class BattleGameState extends GameState {
     enemyPokemon = null;
     currentFrame = 0;
     playerPokemonOut = 0;
+    
+    this.moveButtons = new Button[4];
     start = false;
+    battleStart = false;
+    battleProgress = 0;
+    renderingButtons = false;
+    previousMove = null;
+    setupEffects = false;
     
     /* DIALOGUE BOXES FOR STATS/XP/WIN_MESSAGE */
     /* TRY DOING A FADE-OUT ANIMATION FIRST BEFORE GOING BACK */
@@ -158,7 +185,10 @@ public class BattleGameState extends GameState {
                               
                               UISys.getScreenUI().add(
                                 new DialogueBox(
-                                  "Player sent out " + player.getPokemon()[playerPokemonOut].getName() + "!"
+                                  "Player sent out " + player.getPokemon()[playerPokemonOut].getName() + "!",
+                                  new Executable() {
+                                    public void run() { battleProgress++; }
+                                  }
                                 )
                               );
                             } else {
@@ -166,13 +196,17 @@ public class BattleGameState extends GameState {
                                 new DialogueBox(
                                   "Player blacked out!",
                                   new Executable() {
-                                    public void run() {  end(); }
+                                    public void run() {  
+                                      end();
+                                    }
                                   }
                                 )
                               );
                             }
+                          } else {
+                            battleProgress++;
                           }
-                          battleProgress++;
+                          
                         }
                       }
                     )
@@ -220,7 +254,7 @@ public class BattleGameState extends GameState {
         if (pokemonMoves[(r * 2) + c] != null) {
           Move m = pokemonMoves[(r*2)+c];
           moveButtons[(r * 2) + c] = new Button(
-            btnWidth*c, height-(btnHeight * (2-c)), btnWidth, btnHeight,
+            btnWidth*c, height-(btnHeight * (2-r)), btnWidth, btnHeight,
             pokemonMoves[(r*2)+c].getName(),
             color(255, 255, 255), // color based on type
             new Executable() {
