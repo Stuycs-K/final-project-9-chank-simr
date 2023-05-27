@@ -20,6 +20,9 @@ public class BattleGameState extends GameState {
   /* EFFECT VARIABLES */
   private boolean setupEffects = false;
   
+  private HealthDisplay playerHealth;
+  private HealthDisplay enemyHealth;
+  
   public BattleGameState() {
     super();
     
@@ -28,6 +31,9 @@ public class BattleGameState extends GameState {
   }
   
   public void draw() {
+    playerHealth.setPokemon(player.getPokemon()[playerPokemonOut]);
+    enemyHealth.setPokemon(getEnemyPokemon());
+    
     if (!start) {
       start = true;
       UISys.getScreenUI().add(
@@ -48,6 +54,11 @@ public class BattleGameState extends GameState {
   }
   
   public void start(Pokemon[] enemyPokemon, String enemyName) {
+    if (gameState == GameState.BATTLE) {
+      println("Already in Battle");
+      return;
+    }
+    
     if (!isAlive(player.getPokemon())) {
       UISys.getScreenUI().add(
         new DialogueBox(
@@ -72,6 +83,12 @@ public class BattleGameState extends GameState {
     this.enemyName = enemyName;
     gameState = GameState.BATTLE;
     
+    this.playerHealth = new HealthDisplay(width-HealthDisplay.healthWidth, height-(HealthDisplay.healthHeight*3), true);
+    this.enemyHealth = new HealthDisplay(0, HealthDisplay.healthHeight);
+    
+    UISys.getScreenUI().add(playerHealth);
+    UISys.getScreenUI().add(enemyHealth);
+    
     // find first alive player pokemon
     for (int i = 0; i < player.getPokemon().length; ++i) {
       if (player.getPokemon()[playerPokemonOut].getHP() > 0) {
@@ -95,6 +112,12 @@ public class BattleGameState extends GameState {
     renderingButtons = false;
     previousMove = null;
     setupEffects = false;
+    
+    UISys.getScreenUI().remove(playerHealth);
+    UISys.getScreenUI().remove(enemyHealth);
+    
+    playerHealth = null;
+    enemyHealth = null;
     
     /* DIALOGUE BOXES FOR STATS/XP/WIN_MESSAGE */
     /* TRY DOING A FADE-OUT ANIMATION FIRST BEFORE GOING BACK */

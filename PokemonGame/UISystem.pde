@@ -44,6 +44,8 @@ public class UISystem{
   public void render() {
     // iterate backwards incase ui tries to remove itself
     for (int i = screenUI.size()-1; i >= 0; --i) {
+      if (i > screenUI.size()-1) continue;
+      
       UI ui = screenUI.get(i);
       if (ui == null) continue;
       ui.draw();

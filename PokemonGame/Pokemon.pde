@@ -104,7 +104,7 @@ public class Pokemon {
       damage = move.getDamage() + getAttack();
     } catch (NullPointerException e) { e.printStackTrace(); }
 
-    foe.setHP(foe.getHP() + getDefense() - damage);
+    foe.setHP(max(foe.getHP() + getDefense() - damage, 0));
   }
   
   public Pokemon copy() {
