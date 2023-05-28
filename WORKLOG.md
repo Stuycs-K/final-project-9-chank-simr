@@ -33,6 +33,17 @@
 - created advanced ui's with callback functions
 - created the BattleGameState (manage/render battles)
 
+### 5/27/2023
+
+- created healthbars for the battles
+- cleaned up battle logic
+- created smooth camera movement
+
+### 5/28/2023
+
+- cut out some basic sprites
+- created gameboard loader from pngs
+
 ## Kevin Chan
 
 ### 5/22/23
