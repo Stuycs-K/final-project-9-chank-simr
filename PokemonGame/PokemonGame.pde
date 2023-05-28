@@ -30,8 +30,9 @@ void setup() {
   
   /* Sprite(resource_url, name, width, height, zIndex, hex) */
   sprites = new Sprite[]{
-    new Sprite("assets/grass_floor.jpeg", "GRASS_FLOOR", 1, 1, -1, 2),
-    new Sprite("assets/player.png", "PLAYER", 1, 1, 2, 3)
+    new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, -1, 0X00FF00),
+    new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
+    new Sprite("assets/player.png", "PLAYER", 1, 1, 2, -1)
   }; // sprites stored in memory
   
   // pokedex

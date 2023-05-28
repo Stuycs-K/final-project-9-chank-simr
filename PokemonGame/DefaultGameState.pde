@@ -4,6 +4,7 @@ public class DefaultGameState extends GameState {
     camera = new Camera(height/TILE_WIDTH, width/TILE_WIDTH);
     
     /* initialize tile and collision map */
+    /*
     map = new GameBoard(
       new int[][] {
         {0, 0, 0, 0, 0, 0, 0, 0},
@@ -24,6 +25,8 @@ public class DefaultGameState extends GameState {
         {true, true, true, true, true, true, true, true}
       }
     );
+    */
+    map = new GameBoard("map");
     
     player = new Player(2, 2);
     gameObjects.add(player);
