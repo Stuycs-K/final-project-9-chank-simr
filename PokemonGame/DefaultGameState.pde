@@ -30,6 +30,11 @@ public class DefaultGameState extends GameState {
     
     player = new Player(2, 2);
     gameObjects.add(player);
+    
+    String[] messages = new String[] {"Hello", "Let's battle!"};
+    Pokemon[] NPCparty = new Pokemon[]{pokedex.getPokemon("Pikachu")};
+    NPC npc = new NPC (messages, NPCparty, 5, 5);
+    gameObjects.add(npc);
   }
   
   public void draw() {
