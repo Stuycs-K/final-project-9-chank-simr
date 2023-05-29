@@ -29,27 +29,29 @@ public class NPC extends MonoBehaviour {
   }
   public void render() {
     // render NPC sprite
-    NPCSprite.render(getRow() - player.getRow() + (height/2), getCol() - player.getCol() + (width/2));
+    NPCSprite.render(getRow() - player.getRow() + (height/(2* TILE_WIDTH)), getCol() - player.getCol() + (width/(2* TILE_WIDTH)));
   }
   public void interact() {
     System.out.println("works");
-    /*
     UISys.getScreenUI().add(
       new DialogueBox(
-      dialogue.get(0),
+      dialogue[0],
       new Executable() {
-      for (int x=1; x<dialogue.size(); x++) {
-        run() {
+      public void run() {
+        for (int i = 1; i<dialogue.length; i++) {
           UISys.getScreenUI().add(
             new DialogueBox(
-            "This is the end of the dialogue"
-            )
-            );
+            dialogue[i],
+            new Executable() {
+            public void run() {
+            }
+          }
+          )
+          );
         }
       }
     }
+    )
     );
-    println("interacted");
-    */
   }
 }
