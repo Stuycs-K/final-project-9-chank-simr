@@ -65,3 +65,12 @@
 
 - pushed some changes to Pokemon class to branch but chose not to merge
 - created NPC class
+
+### 5/26/2023
+
+- wrote interact method in Player class
+
+### 5/29/2023
+
+- completed interact method in both Player and NPC classes
+- created NPC rendering and added NPC to DefaultGameState
