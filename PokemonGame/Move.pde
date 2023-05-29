@@ -17,7 +17,7 @@ public class Move{
   public String getType(){
     return type;
   }
-  public int getDmg(){
+  public int getDamage(){
     return damage;
   }
 }
