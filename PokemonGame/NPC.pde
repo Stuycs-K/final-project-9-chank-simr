@@ -27,7 +27,12 @@ public class NPC extends MonoBehaviour {
   public boolean getBattleStatus() {
     return canBattle;
   }
+  public void render() {
+    // render NPC sprite
+    NPCSprite.render(getRow() - player.getRow() + (height/2), getCol() - player.getCol() + (width/2));
+  }
   public void interact() {
+    System.out.println("works");
     /*
     UISys.getScreenUI().add(
       new DialogueBox(

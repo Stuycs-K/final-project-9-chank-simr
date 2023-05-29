@@ -74,7 +74,7 @@ public class Player extends MonoBehaviour {
   }
   private void interact() {
     /* CHECK IF PLAYER IS NEXT TO NPC, THEN CHECK IF PLAYER IS LOOKING AT NPC, IF SO, INTERACT WITH NPC */
-    if (!keyboardInput.isDown(Controller.PE)) {
+    if (keyboardInput.isDown(Controller.PE)) {
       ArrayList<MonoBehaviour> gameObjects = gameStates[GameState.DEFAULT].getGameObjects();
       for (int i=1; i<gameObjects.size(); i++) {
         if (row + lookVector[0] == gameObjects.get(i).getRow() && col + lookVector[1] == gameObjects.get(i).getCol()) {
