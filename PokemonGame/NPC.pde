@@ -53,5 +53,9 @@ public class NPC extends MonoBehaviour {
     }
     )
     );
+    
+    if (canBattle){// && UISys.getScreenUI().size() == 0){
+      ((BattleGameState) gameStates[GameState.BATTLE]).start(NPCPokemon, "Vicious NPC");
+    }
   }
 }
