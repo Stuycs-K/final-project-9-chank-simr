@@ -4,6 +4,7 @@ public class DefaultGameState extends GameState {
     camera = new Camera(height/TILE_WIDTH, width/TILE_WIDTH);
     
     /* initialize tile and collision map */
+    /*
     map = new GameBoard(
       new int[][] {
         {0, 0, 0, 0, 0, 0, 0, 0},
@@ -24,9 +25,16 @@ public class DefaultGameState extends GameState {
         {true, true, true, true, true, true, true, true}
       }
     );
+    */
+    map = new GameBoard("map");
     
     player = new Player(2, 2);
     gameObjects.add(player);
+    
+    String[] messages = new String[] {"Hello", "Let's battle!"};
+    Pokemon[] NPCparty = new Pokemon[]{pokedex.getPokemon("Pikachu")};
+    NPC npc = new NPC (messages, NPCparty, 4, 4);
+    gameObjects.add(npc);
   }
   
   public void draw() {

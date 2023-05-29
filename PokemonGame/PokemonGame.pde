@@ -20,17 +20,23 @@ Camera camera;
 GameBoard map;
 
 GameState[] gameStates;
-int gameState = GameState.DEFAULT;
+int gameState = GameState.DEFAULT; // GameState.DEFAULT, GameState.BATTLE
+
+Pokedex pokedex;
 
 void setup() {
-  size(1250, 950);
+  size(1250, 850);
   frameRate(30);
   
   /* Sprite(resource_url, name, width, height, zIndex, hex) */
   sprites = new Sprite[]{
-    new Sprite("assets/grass_floor.jpeg", "GRASS_FLOOR", 1, 1, -1, 2),
-    new Sprite("assets/player.png", "PLAYER", 1, 1, 2, 3)
+    new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, -1, 0X00FF00),
+    new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
+    new Sprite("assets/player.png", "PLAYER", 1, 1, 2, -1)
   }; // sprites stored in memory
+  
+  // pokedex
+  pokedex = new Pokedex();
   
   keyboardInput = new Controller();
   renderQueue = new PriorityQueue<Render>();
@@ -38,6 +44,7 @@ void setup() {
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
+  /* USAGE EXAMPLES
   UISys.getScreenUI().add(
     new DialogueBox(
       "hello",
@@ -52,6 +59,7 @@ void setup() {
       }
     )
   );
+  
   UISys.getScreenUI().add(
     new Button(
       10, 30, 100, 200, 
@@ -65,6 +73,23 @@ void setup() {
       } 
      )
    );
+   */
+  
+  
+  /* DEBUG */
+  /* TEST BATTLES */
+  UISys.getScreenUI().add(
+    new Button(
+      10, 40, 200, 100,
+      "Start Battle",
+      color(255, 255, 255),
+      new Executable() {
+        public void run() {
+          ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
+        }
+      }
+    )
+  );
 }
 
 void draw() {
@@ -93,7 +118,7 @@ void draw() {
   
   // debug
   debug.log("FRAMERATE: " + frameRate);
-  debug.log("SCREEN_UI: " + UISys.getScreenUI().size());
+  debug.log("SCREEN_UI: " + UISys);
   debug.tick();
 }
 
@@ -114,7 +139,8 @@ Sprite getSprite(String n) {
 }
 
 void mouseClicked() {
-  for (int x=0; x<UISys.size(); x++) {
+  for (int x=0; x < UISys.size(); x++) {
+    if (UISys.get(x) == null) continue;
     UISys.get(x).clicked();
   }
 }

@@ -26,7 +26,23 @@
 - created GameBoard class with tiles + collision
 - created z-index based sprite rendering
 - created GameStates to accomodate different phases of the game.
-- created a debug class for on-screen debugging
+- created a debug class for on-screen debug messages
+
+### 5/26/2023
+
+- created advanced ui's with callback functions
+- created the BattleGameState (manage/render battles)
+
+### 5/27/2023
+
+- created healthbars for the battles
+- cleaned up battle logic
+- created smooth camera movement
+
+### 5/28/2023
+
+- cut out some basic sprites
+- created gameboard loader from pngs
 
 ## Kevin Chan
 
@@ -44,3 +60,8 @@
 
 - finished Pokemon class (without chances of dodging or retreating)
 - fixed button in UISystems
+
+### 5/25/2023
+
+- pushed some changes to Pokemon class to branch but chose not to merge
+- created NPC class
