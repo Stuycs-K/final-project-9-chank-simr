@@ -59,8 +59,15 @@ public class Camera {
     }
     
     /* RENDER GAMEOBJECTS */
+    int rowStart = player.getRow() - centerRow;
+    int rowEnd = player.getRow() + centerRow;
+    int colStart = player.getCol() - centerCol;
+    int colEnd = player.getCol() + centerCol;
+    
     for (MonoBehaviour obj : gameStates[gameState].getGameObjects()) {
-       obj.render();
+      // check if its within camera
+      if ((rowStart <= obj.getRow() && obj.getRow() <= rowEnd) && (colStart <= obj.getCol() && obj.getCol() <= colEnd))
+        obj.render();
     }
   }
   
