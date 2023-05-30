@@ -32,30 +32,29 @@ public class NPC extends MonoBehaviour {
     NPCSprite.render(getRow() - player.getRow() + (height/(2* TILE_WIDTH)), getCol() - player.getCol() + (width/(2* TILE_WIDTH)));
   }
   public void interact() {
-    System.out.println("works");
-    UISys.getScreenUI().add(
-      new DialogueBox(
-      dialogue[0],
+    DialogueBox dBox = new DialogueBox(
+      dialogue[dialogue.length-1],
       new Executable() {
-      public void run() {
-        for (int i = 1; i<dialogue.length; i++) {
-          UISys.getScreenUI().add(
-            new DialogueBox(
-            dialogue[i],
-            new Executable() {
-            public void run() {
-            }
+        public void run() {
+          if (canBattle){
+            ((BattleGameState) gameStates[GameState.BATTLE]).start(NPCPokemon, "Vicious NPC");
           }
-          )
-          );
         }
       }
-    }
-    )
     );
     
-    if (canBattle){// && UISys.getScreenUI().size() == 0){
-      ((BattleGameState) gameStates[GameState.BATTLE]).start(NPCPokemon, "Vicious NPC");
+    for (int i = dialogue.length-2; i >= 0; --i) {
+      final DialogueBox tempBox = dBox;
+      dBox = new DialogueBox(
+        dialogue[i],
+        new Executable() {
+          public void run() {
+            UISys.getScreenUI().add(tempBox);
+          }
+        }
+      );
     }
+    
+    UISys.getScreenUI().add(dBox);
   }
 }
