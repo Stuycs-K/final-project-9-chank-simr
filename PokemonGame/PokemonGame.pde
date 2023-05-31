@@ -98,7 +98,7 @@ void setup() {
       color(255, 255, 255),
       new Executable() {
         public void run() {
-          ((MenuGameState) gameStates[GameState.MENU]);//.start();
+          ((MenuGameState) gameStates[GameState.MENU]).start();
         }
       }
     )
