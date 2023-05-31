@@ -6,10 +6,11 @@ public class NPC extends MonoBehaviour {
   public NPC(String[] messages, Pokemon[] pokemonToBattle, int startingRow, int startingCol) {
     super(startingRow, startingCol);
 
-    NPCSprite = getSprite("PLAYER");
+    NPCSprite = getSprite("NPC");
     dialogue = messages;
     NPCPokemon = pokemonToBattle;
     canBattle = true;
+    map.tiles[startingRow][startingCol] = NPCSprite.getHex();
   }
   public NPC(String[] messages, int startingRow, int startingCol) {
     super(startingRow, startingCol);
@@ -27,10 +28,7 @@ public class NPC extends MonoBehaviour {
   public boolean getBattleStatus() {
     return canBattle;
   }
-  public void render() {
-    // render NPC sprite
-    NPCSprite.render(getRow() - player.getRow() + (height/(2* TILE_WIDTH)), getCol() - player.getCol() + (width/(2* TILE_WIDTH)));
-  }
+  
   public void interact() {
     DialogueBox dBox = new DialogueBox(
       dialogue[dialogue.length-1],
