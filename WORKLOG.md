@@ -78,4 +78,10 @@
 ### 5/30/2023
 
 - added player collisions with NPC and other gameObjects
-- started creating menu
+- started creating menu0
+
+### 5/31/2023
+
+- added more Pokemon to Pokedex
+- updated ReadMe file
+- worked on Pokemon button within Menu
