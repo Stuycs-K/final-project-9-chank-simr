@@ -41,6 +41,8 @@ public class Player extends MonoBehaviour {
 
   public void move() {
     if (moving || pause) return;
+    
+    
 
     /* LOOK CODE */
     if (keyboardInput.isPressed(keyboardInput.PUP)) {
@@ -70,6 +72,13 @@ public class Player extends MonoBehaviour {
       int endCol = col + lookVector[1];
 
       if (!map.canWalkOn(endRow, endCol)) moving = false;
+      ArrayList<MonoBehaviour> gameObjects = gameStates[gameState].getGameObjects();
+    for (int i=1; i<gameObjects.size(); i++){
+      if (gameObjects.get(i).getRow() == getRow() + lookVector[0] && gameObjects.get(i).getCol() == getCol() + lookVector[1]){
+        moving = false;
+        return;
+      }
+    }
     }
   }
   private void interact() {
