@@ -74,3 +74,8 @@
 
 - completed interact method in both Player and NPC classes
 - created NPC rendering and added NPC to DefaultGameState
+
+### 5/30/2023
+
+- added player collisions with NPC and other gameObjects
+- started creating menu
