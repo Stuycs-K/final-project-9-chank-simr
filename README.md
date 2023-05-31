@@ -11,4 +11,4 @@ We also have parent classes such as Monobehaviour for UI objects (dialogue boxes
 Use the WASD keys to move the player.
 Use the mouse clicks to click buttons, such as on-screen buttons and Pokemon move buttons when battling.
 Press the space bar to move to next dialogue.
-Press the 'E' key to interact with NPCs when the player is facing in the direction of the NPC.
+Press the 'E' key to interact with NPCs when the player is facing in the direction of the NPC (the other red square on the screen)
