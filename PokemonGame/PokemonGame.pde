@@ -20,7 +20,7 @@ Camera camera;
 GameBoard map;
 
 GameState[] gameStates;
-int gameState = GameState.DEFAULT; // GameState.DEFAULT, GameState.BATTLE
+int gameState = GameState.DEFAULT; // GameState.DEFAULT, GameState.BATTLE, GameSTATE.MENU
 
 Pokedex pokedex;
 
@@ -40,7 +40,7 @@ void setup() {
   
   keyboardInput = new Controller();
   renderQueue = new PriorityQueue<Render>();
-  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState()};
+  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState()};
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
@@ -80,12 +80,25 @@ void setup() {
   /* TEST BATTLES */
   UISys.getScreenUI().add(
     new Button(
-      10, 40, 200, 100,
+      10, 160, 200, 100,
       "Start Battle",
       color(255, 255, 255),
       new Executable() {
         public void run() {
           ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
+        }
+      }
+    )
+  );
+  
+  UISys.getScreenUI().add(
+    new Button(
+      10, 40, 200, 100,
+      "Menu",
+      color(255, 255, 255),
+      new Executable() {
+        public void run() {
+          ((MenuGameState) gameStates[GameState.MENU]);//.start();
         }
       }
     )
