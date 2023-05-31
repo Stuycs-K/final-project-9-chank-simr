@@ -80,7 +80,7 @@ void setup() {
   /* TEST BATTLES */
   UISys.getScreenUI().add(
     new Button(
-      10, 160, 200, 100,
+      240, 40, 200, 100,
       "Start Battle",
       color(255, 255, 255),
       new Executable() {
