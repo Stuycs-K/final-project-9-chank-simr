@@ -44,6 +44,15 @@
 - cut out some basic sprites
 - created gameboard loader from pngs
 
+### 5/30/2023
+
+- removed unnecessary renderings
+
+### 5/31/2023
+
+- fixed excess vision bug
+- optimized rendering with RenderQueue class.
+
 ## Kevin Chan
 
 ### 5/22/23

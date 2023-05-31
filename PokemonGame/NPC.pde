@@ -15,9 +15,10 @@ public class NPC extends MonoBehaviour {
   public NPC(String[] messages, int startingRow, int startingCol) {
     super(startingRow, startingCol);
 
-    NPCSprite = getSprite("PLAYER");
+    NPCSprite = getSprite("NPC");
     dialogue = messages;
     canBattle = false;
+    map.tiles[startingRow][startingCol] = NPCSprite.getHex();
   }
   public String[] getDialogue() {
     return dialogue;
