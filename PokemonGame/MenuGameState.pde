@@ -3,22 +3,6 @@ public class MenuGameState extends GameState {
     super();
   }
   public void draw() {
-    /*
-      UISys.getScreenUI().add(
-        new DialogueBox(
-        "You have been challenged by " + enemyName + "!",
-        new Executable() {
-        public void run() {
-          battleStart = true;
-        }
-      }
-      )
-      );
-
-    if (battleStart) battleLoop();
-
-    currentFrame++;
-    */ 
   }
 
   public void start() {
