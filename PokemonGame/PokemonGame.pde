@@ -98,7 +98,7 @@ void setup() {
       color(255, 255, 255),
       new Executable() {
         public void run() {
-          ((MenuGameState) gameStates[GameState.MENU]).start();
+          if (gameState == GameState.DEFAULT && UISys.getScreenUI().size() < 3)((MenuGameState) gameStates[GameState.MENU]).start();
         }
       }
     )

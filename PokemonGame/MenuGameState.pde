@@ -6,6 +6,7 @@ public class MenuGameState extends GameState {
   }
 
   public void start() {
+    background(0);
     if (gameState == GameState.MENU) {
       println("Already in Menu");
       return;
