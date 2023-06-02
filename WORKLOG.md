@@ -85,3 +85,7 @@
 - added more Pokemon to Pokedex
 - updated ReadMe file
 - worked on Pokemon button within Menu
+
+### 6/1/2023
+
+- completed display of Pokemon when Pokemon button is clickd within Menu
