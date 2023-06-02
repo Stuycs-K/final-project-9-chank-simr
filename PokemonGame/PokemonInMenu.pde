@@ -30,6 +30,8 @@ public class PokemonInMenu extends Button {
     /* WRITE HP */
     textSize(20);
     text("HP:", x+250, y+60);
+    
+    /* DRAW POKEMON SPRITE*/
 
     /* WRITE POKEMON LEVEL */
   }
