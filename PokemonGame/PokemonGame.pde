@@ -85,7 +85,7 @@ void setup() {
       color(255, 255, 255),
       new Executable() {
         public void run() {
-          ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
+          if (gameState != GameState.MENU) ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
         }
       }
     )
@@ -98,7 +98,7 @@ void setup() {
       color(255, 255, 255),
       new Executable() {
         public void run() {
-          if (gameState == GameState.DEFAULT && UISys.getScreenUI().size() < 3)((MenuGameState) gameStates[GameState.MENU]).start();
+          if (gameState == GameState.DEFAULT && UISys.getScreenUI().size() < 3) ((MenuGameState) gameStates[GameState.MENU]).start();
         }
       }
     )
