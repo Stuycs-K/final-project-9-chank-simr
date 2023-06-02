@@ -10,7 +10,7 @@ UISystem UISys;
 Debug debug = new Debug();
 
 Sprite[] sprites;
-PriorityQueue<Render> renderQueue;
+RenderQueue renderQueue;
 
 Controller keyboardInput;
 Player player;
@@ -25,21 +25,22 @@ int gameState = GameState.DEFAULT; // GameState.DEFAULT, GameState.BATTLE, GameS
 Pokedex pokedex;
 
 void setup() {
-  size(1250, 850);
+  size(1050, 650);
   frameRate(30);
   
   /* Sprite(resource_url, name, width, height, zIndex, hex) */
   sprites = new Sprite[]{
-    new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, -1, 0X00FF00),
+    new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, 0, 0X00FF00),
     new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
-    new Sprite("assets/player.png", "PLAYER", 1, 1, 2, -1)
+    new Sprite("assets/player.png", "PLAYER", 1, 1, 1, -1),
+    new Sprite("assets/player.png", "NPC", 1, 1, 0, -2)
   }; // sprites stored in memory
   
   // pokedex
   pokedex = new Pokedex();
   
   keyboardInput = new Controller();
-  renderQueue = new PriorityQueue<Render>();
+  renderQueue = new RenderQueue(3);
   gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState()};
 
   /* INITIALIZE UI SYSTEM */
@@ -113,15 +114,7 @@ void draw() {
   gameStates[gameState].draw();
   
   // rendering based on PriorityQueue sorted by z-index of sprite
-  for (int i = 0; i < renderQueue.size(); ++i) {
-    Render r = renderQueue.remove();
-    
-    image(
-      r.getSprite().getImage(), 
-      r.getCol() * TILE_WIDTH,
-      r.getRow() * TILE_WIDTH 
-    );
-  }
+  renderQueue.render();
 
   // draw UI
   UISys.render();
