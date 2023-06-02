@@ -10,7 +10,7 @@ UISystem UISys;
 Debug debug = new Debug();
 
 Sprite[] sprites;
-PriorityQueue<Render> renderQueue;
+RenderQueue renderQueue;
 
 Controller keyboardInput;
 Player player;
@@ -20,27 +20,28 @@ Camera camera;
 GameBoard map;
 
 GameState[] gameStates;
-int gameState = GameState.DEFAULT; // GameState.DEFAULT, GameState.BATTLE
+int gameState = GameState.DEFAULT; // GameState.DEFAULT, GameState.BATTLE, GameSTATE.MENU
 
 Pokedex pokedex;
 
 void setup() {
-  size(1250, 850);
+  size(1050, 650);
   frameRate(30);
   
   /* Sprite(resource_url, name, width, height, zIndex, hex) */
   sprites = new Sprite[]{
-    new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, -1, 0X00FF00),
+    new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, 0, 0X00FF00),
     new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
-    new Sprite("assets/player.png", "PLAYER", 1, 1, 2, -1)
+    new Sprite("assets/player.png", "PLAYER", 1, 1, 1, -1),
+    new Sprite("assets/player.png", "NPC", 1, 1, 0, -2)
   }; // sprites stored in memory
   
   // pokedex
   pokedex = new Pokedex();
   
   keyboardInput = new Controller();
-  renderQueue = new PriorityQueue<Render>();
-  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState()};
+  renderQueue = new RenderQueue(3);
+  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState()};
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
@@ -80,12 +81,25 @@ void setup() {
   /* TEST BATTLES */
   UISys.getScreenUI().add(
     new Button(
-      10, 40, 200, 100,
+      240, 40, 200, 100,
       "Start Battle",
       color(255, 255, 255),
       new Executable() {
         public void run() {
-          ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
+          if (gameState != GameState.MENU) ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
+        }
+      }
+    )
+  );
+  
+  UISys.getScreenUI().add(
+    new Button(
+      10, 40, 200, 100,
+      "Menu",
+      color(255, 255, 255),
+      new Executable() {
+        public void run() {
+          if (gameState == GameState.DEFAULT && UISys.getScreenUI().size() < 3) ((MenuGameState) gameStates[GameState.MENU]).start();
         }
       }
     )
@@ -100,15 +114,7 @@ void draw() {
   gameStates[gameState].draw();
   
   // rendering based on PriorityQueue sorted by z-index of sprite
-  for (int i = 0; i < renderQueue.size(); ++i) {
-    Render r = renderQueue.remove();
-    
-    image(
-      r.getSprite().getImage(), 
-      r.getCol() * TILE_WIDTH,
-      r.getRow() * TILE_WIDTH 
-    );
-  }
+  renderQueue.render();
 
   // draw UI
   UISys.render();

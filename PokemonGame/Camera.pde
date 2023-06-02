@@ -2,9 +2,12 @@ public class Camera {
   private int[][] vision;
   private int centerRow;
   private int centerCol;
+  private int rows;
+  private int cols;
   
   public Camera(int rows, int cols) {
-    vision = new int[rows][cols];
+    this.rows = rows;
+    this.cols = cols;
     centerRow = rows/2;
     centerCol = cols/2;
   }
@@ -14,6 +17,7 @@ public class Camera {
   public void read() {
     int pRow = player.getRow();
     int pCol = player.getCol();
+    vision = new int[rows][cols];
     
     for (int r = 0; r <= centerRow; ++r) {
       for (int c = 0; c <= centerCol; ++c) {
