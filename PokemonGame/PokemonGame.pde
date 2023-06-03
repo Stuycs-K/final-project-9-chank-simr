@@ -40,8 +40,8 @@ void setup() {
   pokedex = new Pokedex();
   
   keyboardInput = new Controller();
-  renderQueue = new RenderQueue(3);
-  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState()};
+  renderQueue = new RenderQueue(4);
+  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0])};
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
