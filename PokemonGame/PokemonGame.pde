@@ -40,8 +40,8 @@ void setup() {
   pokedex = new Pokedex();
   
   keyboardInput = new Controller();
-  renderQueue = new RenderQueue(3);
-  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState()};
+  renderQueue = new RenderQueue(4);
+  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0])};
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
@@ -86,7 +86,7 @@ void setup() {
       color(255, 255, 255),
       new Executable() {
         public void run() {
-          if (gameState != GameState.MENU) ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
+          if (gameState == GameState.DEFAULT && UISys.getScreenUI().size() < 3) ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Pikachu") }, "PKMN-NERD Randy");
         }
       }
     )

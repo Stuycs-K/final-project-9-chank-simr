@@ -38,14 +38,16 @@ public class MenuGameState extends GameState {
       public void run() {
         Pokemon[] party = player.getPokemon();
         for (int i=0; i<party.length; i++) {
-          
+          Pokemon p = party[i];
           UISys.getScreenUI().add(
             new PokemonInMenu(
             width/2, 40 + i* (100 + 20),
             party[i],
             new Executable() {
             public void run() {
-              end();
+              PokemonStatsGameState newGameState = new PokemonStatsGameState(p);
+              gameStates[3] = newGameState;
+              newGameState.start();
             }
           }
           )
