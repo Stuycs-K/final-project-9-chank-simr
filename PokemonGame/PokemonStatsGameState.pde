@@ -19,11 +19,11 @@ public class PokemonStatsGameState extends GameState {
     fill(255);
     textSize(50);
     text(pokemon.getName(), x, y);
-    
+
     /* WRITE HP */
     textSize(20);
     text("HP:", x+150, y+60);
-    
+
     /* DRAW STATS*/
     rect(10, height-height/3-20, x-30, height/3+10);
     fill(0);
@@ -35,12 +35,27 @@ public class PokemonStatsGameState extends GameState {
     text("SPEED", 20, height-height/3-20 +210);
     text(pokemon.getSpeed(), x-120, height-height/3-20 +210);
     textSize(20);
-    
+
+    fill(255);
+    rect(x+10, height-height/3-20, x-30, height/3+10);
+    fill(0);
+    textSize(50);
+    text("MOVES", x+ 20, height-height/3-20 +50);
+    textSize(30);
+    for (int i=0; i<pokemon.getMoves().length; i++) {
+      textSize(30);
+      text(pokemon.getMoves()[i].getName(), x+ 20, height-height/3-10 +40 *(i+2));
+      textSize(20);
+      text(pokemon.getMoves()[i].getType(), x+ 200, height-height/3-10 +40 *(i+2));
+      text(pokemon.getMoves()[i].getDamage(), x+ 300, height-height/3-10 +40 *(i+2));
+    }
+    textSize(20);
+
     /* DRAW POKEMON SPRITE*/
     PImage spriteImage = pokemon.getImage().getImage().copy();
     spriteImage.resize(0, y);
     image(spriteImage, x/4, y-20);
-    
+
     /* WRITE POKEMON LEVEL */
   }
   private void healthbar() {
