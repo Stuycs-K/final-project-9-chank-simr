@@ -25,7 +25,7 @@ public class PokemonInMenu extends Button {
     /* WRITE POKEMON NAME */
     textSize(30);
     fill(0, 0, 0);
-    text(pokemon.getName(), x+150, y+40);
+    text(pokemon.getName(), x+120, y+40);
     
     /* WRITE HP */
     textSize(20);

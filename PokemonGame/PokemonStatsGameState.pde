@@ -46,8 +46,13 @@ public class PokemonStatsGameState extends GameState {
       textSize(30);
       text(pokemon.getMoves()[i].getName(), x+ 20, height-height/3-10 +40 *(i+2));
       textSize(20);
-      text(pokemon.getMoves()[i].getType(), x+ 200, height-height/3-10 +40 *(i+2));
-      text(pokemon.getMoves()[i].getDamage(), x+ 300, height-height/3-10 +40 *(i+2));
+      typeColor(pokemon.getMoves()[i].getType());
+      noStroke();
+      rect(x+ 220, height-height/3-30 +40 *(i+2), 80, 30);
+      stroke(0);
+      fill(0);
+      text(pokemon.getMoves()[i].getType(), x+ 220, height-height/3-10 +40 *(i+2));
+      text(pokemon.getMoves()[i].getDamage(), x+ 320, height-height/3-10 +40 *(i+2));
     }
     textSize(20);
 
@@ -71,6 +76,21 @@ public class PokemonStatsGameState extends GameState {
     fill(255);
     textSize(25);
     text(pokemon.getHP() + "/" + pokemon.getMaxHP(), x+200 + (healthbarWidth * 0.3), y+40 + healthbarHeight + 20);
+  }
+  private void typeColor(String type) {
+    if (type.equals("NORMAL")) {
+      fill (colNORMAL);
+    } else if (type.equals("ELECTRIC")) {
+      fill (colELECTRIC);
+    } else if (type.equals("WATER")) {
+      fill (colWATER);
+    } else if (type.equals("GRASS")) {
+      fill (colGRASS);
+    } else if (type.equals("POISON")) {
+      fill (colPOISON);
+    } else if (type.equals("FIRE")) {
+      fill (colFIRE);
+    }
   }
 
   public void start() {
@@ -109,4 +129,5 @@ public class PokemonStatsGameState extends GameState {
     }
     ((MenuGameState) gameStates[GameState.MENU]).start();
   }
+  
 }

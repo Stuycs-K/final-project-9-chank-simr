@@ -14,7 +14,7 @@ public class Player extends MonoBehaviour {
       lookVector = new int[]{1, 0}; // looking down
       walkProgress = walkDelay;
       playerSprite = getSprite("PLAYER");
-      party = new Pokemon[]{pokedex.getPokemon("Pikachu")};
+      party = new Pokemon[]{pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Squirtle"), pokedex.getPokemon("Bulbasaur"), pokedex.getPokemon("Charmander")};
     } else {
       println("Error: instance of Player already exists");
     }
