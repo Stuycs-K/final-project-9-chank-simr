@@ -37,7 +37,7 @@ public class PokemonStatsGameState extends GameState {
     textSize(20);
     
     /* DRAW POKEMON SPRITE*/
-    PImage spriteImage = pokemon.getImage().getImage();
+    PImage spriteImage = pokemon.getImage().getImage().copy();
     spriteImage.resize(0, y);
     image(spriteImage, x/4, y-20);
     

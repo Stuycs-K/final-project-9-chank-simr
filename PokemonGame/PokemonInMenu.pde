@@ -32,9 +32,10 @@ public class PokemonInMenu extends Button {
     text("HP:", x+250, y+60);
     
     /* DRAW POKEMON SPRITE*/
-    PImage spriteImage = pokemon.getImage().getImage();
+    PImage spriteImage = pokemon.getImage().getImage().copy();
     spriteImage.resize(0, healthHeight-healthHeight/3);
     image(spriteImage, x+30, y+20);
+    
     /* WRITE POKEMON LEVEL */
   }
 
