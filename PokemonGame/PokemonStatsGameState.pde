@@ -19,11 +19,11 @@ public class PokemonStatsGameState extends GameState {
     fill(255);
     textSize(50);
     text(pokemon.getName(), x, y);
-    
+
     /* WRITE HP */
     textSize(20);
     text("HP:", x+150, y+60);
-    
+
     /* DRAW STATS*/
     rect(10, height-height/3-20, x-30, height/3+10);
     fill(0);
@@ -35,12 +35,32 @@ public class PokemonStatsGameState extends GameState {
     text("SPEED", 20, height-height/3-20 +210);
     text(pokemon.getSpeed(), x-120, height-height/3-20 +210);
     textSize(20);
-    
+
+    fill(255);
+    rect(x+10, height-height/3-20, x-30, height/3+10);
+    fill(0);
+    textSize(50);
+    text("MOVES", x+ 20, height-height/3-20 +50);
+    textSize(30);
+    for (int i=0; i<pokemon.getMoves().length; i++) {
+      textSize(30);
+      text(pokemon.getMoves()[i].getName(), x+ 20, height-height/3-10 +40 *(i+2));
+      textSize(20);
+      typeColor(pokemon.getMoves()[i].getType());
+      noStroke();
+      rect(x+ 220, height-height/3-30 +40 *(i+2), 80, 30);
+      stroke(0);
+      fill(0);
+      text(pokemon.getMoves()[i].getType(), x+ 220, height-height/3-10 +40 *(i+2));
+      text(pokemon.getMoves()[i].getDamage(), x+ 320, height-height/3-10 +40 *(i+2));
+    }
+    textSize(20);
+
     /* DRAW POKEMON SPRITE*/
     PImage spriteImage = pokemon.getImage().getImage().copy();
     spriteImage.resize(0, y);
     image(spriteImage, x/4, y-20);
-    
+
     /* WRITE POKEMON LEVEL */
   }
   private void healthbar() {
@@ -56,6 +76,21 @@ public class PokemonStatsGameState extends GameState {
     fill(255);
     textSize(25);
     text(pokemon.getHP() + "/" + pokemon.getMaxHP(), x+200 + (healthbarWidth * 0.3), y+40 + healthbarHeight + 20);
+  }
+  private void typeColor(String type) {
+    if (type.equals("NORMAL")) {
+      fill (colNORMAL);
+    } else if (type.equals("ELECTRIC")) {
+      fill (colELECTRIC);
+    } else if (type.equals("WATER")) {
+      fill (colWATER);
+    } else if (type.equals("GRASS")) {
+      fill (colGRASS);
+    } else if (type.equals("POISON")) {
+      fill (colPOISON);
+    } else if (type.equals("FIRE")) {
+      fill (colFIRE);
+    }
   }
 
   public void start() {
@@ -94,4 +129,5 @@ public class PokemonStatsGameState extends GameState {
     }
     ((MenuGameState) gameStates[GameState.MENU]).start();
   }
+  
 }

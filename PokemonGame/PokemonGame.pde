@@ -23,6 +23,12 @@ GameState[] gameStates;
 int gameState = GameState.DEFAULT; // GameState.DEFAULT, GameState.BATTLE, GameSTATE.MENU
 
 Pokedex pokedex;
+color colNORMAL = color(200);
+color colELECTRIC = color (255, 255, 0);
+color colWATER = color (135, 206, 235);
+color colGRASS = color (124, 252, 0);
+color colPOISON = color (160, 32, 240);
+color colFIRE = color (238, 75, 43);
 
 void setup() {
   size(1050, 650);
