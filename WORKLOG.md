@@ -98,3 +98,9 @@
 ### 6/1/2023
 
 - completed display of Pokemon when Pokemon button is clickd within Menu
+
+### 6/3/2023
+
+- when a specific Pokemon is clicked after the Pokemon button within Menu, shows that Pokemon's stats
+- added a new GameState to show Pokemon stats
+- displayed Pokemon sprites in menu and individual PokemonStatsGameState
