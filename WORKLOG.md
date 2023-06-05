@@ -104,3 +104,8 @@
 - when a specific Pokemon is clicked after the Pokemon button within Menu, shows that Pokemon's stats
 - added a new GameState to show Pokemon stats
 - displayed Pokemon sprites in menu and individual PokemonStatsGameState
+
+### 6/5/2023
+
+- created Item class and BerryOrPotion subclass
+- created ItemDictionary class to store all possible items
