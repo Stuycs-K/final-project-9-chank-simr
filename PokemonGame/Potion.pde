@@ -1,7 +1,7 @@
-public class BerryOrPotion extends Item{
+public class Potion extends Item{
   private int healAmount;
   
-  public BerryOrPotion (Sprite i, String s, int info){
+  public Potion (Sprite i, String s, int info){
     super(i, s);
     healAmount = info;
   }

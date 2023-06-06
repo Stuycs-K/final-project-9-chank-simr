@@ -3,11 +3,10 @@ public class ItemDictionary {
 
   public ItemDictionary() {
     items = new Item[]{
-      new BerryOrPotion(getSprite("PLAYER"), "Oran Berry", 10),
-      new BerryOrPotion(getSprite("PLAYER"), "Sitrus Berry", 30),
-      new BerryOrPotion(getSprite("PLAYER"), "Potion", 20),
-      new BerryOrPotion(getSprite("PLAYER"), "Super Potion", 50),
-      new BerryOrPotion(getSprite("PLAYER"), "Hyper Potion", 200)
+      new Potion(getSprite("PLAYER"), "Potion", 20),
+      new Potion(getSprite("PLAYER"), "Super Potion", 50),
+      new Potion(getSprite("PLAYER"), "Hyper Potion", 200), 
+      new Pokeball(getSprite("PLAYER"), "Normal Pokeball", 50)
     };
   }
   
