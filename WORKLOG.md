@@ -109,3 +109,8 @@
 
 - created Item class and BerryOrPotion subclass
 - created ItemDictionary class to store all possible items
+
+### 6/6/2023
+
+- created Pokeball class
+- deleted BerryOrPotion class and replaced with Potion class
