@@ -3,6 +3,7 @@ public class GameState {
   public static final int BATTLE = 1;
   public static final int MENU = 2;
   public static final int POKEMONSTATS = 3;
+  public static final int BAG = 4;
 
   protected ArrayList<MonoBehaviour> gameObjects;
 

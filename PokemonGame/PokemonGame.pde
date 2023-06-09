@@ -14,6 +14,7 @@ RenderQueue renderQueue;
 
 Controller keyboardInput;
 Player player;
+Bag bag = new Bag();
 
 /* DEFAULT GAME STATE VARIABLES */
 Camera camera;
@@ -39,15 +40,16 @@ void setup() {
     new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, 0, 0X00FF00),
     new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
     new Sprite("assets/player.png", "PLAYER", 1, 1, 1, -1),
-    new Sprite("assets/player.png", "NPC", 1, 1, 0, -2)
+    new Sprite("assets/player.png", "NPC", 1, 1, 0, -2),
+    new Sprite("assets/tiles/wildgrass.png", "WILD_GRASS", 1, 1, 0, 0X0000FF)
   }; // sprites stored in memory
   
   // pokedex
   pokedex = new Pokedex();
   
   keyboardInput = new Controller();
-  renderQueue = new RenderQueue(4);
-  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0])};
+  renderQueue = new RenderQueue(5);
+  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(bag)};
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();

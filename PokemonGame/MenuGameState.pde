@@ -68,7 +68,7 @@ public class MenuGameState extends GameState {
       color(255, 255, 255),
       new Executable() {
       public void run() {
-        end();
+        ((BagGameState) gameStates[GameState.BAG]).start();
       }
     }
     )
