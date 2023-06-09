@@ -1,6 +1,6 @@
 public class Pokeball extends Item{
-  int catchRate;
-  Pokemon pokemon;
+  private int catchRate;
+  private Pokemon pokemon;
   
   //info should be from (0,100]
   public Pokeball (Sprite i, String s, int info){
@@ -13,6 +13,9 @@ public class Pokeball extends Item{
   }
   public Pokemon getPokemon(){
     return pokemon;
+  }
+  public void setPokemon(Pokemon p){
+    pokemon = p;
   }
   
   //Returns true if the Pokemon is catched, and false otherwise
@@ -27,5 +30,10 @@ public class Pokeball extends Item{
       }
       else return false;
     }
+  }
+  public Item copy() {
+    Pokeball newPokeball = new Pokeball(image, name);
+    newPokeball.setPokemon (pokemon);
+    return newPokeball;
   }
 }

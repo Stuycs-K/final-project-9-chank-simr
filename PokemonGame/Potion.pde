@@ -19,4 +19,7 @@ public class Potion extends Item{
       return getHealAmount();
     }
   }
+  public Item copy() {
+    return new Potion(image, name, healAmount);
+  }
 }

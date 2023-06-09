@@ -12,5 +12,8 @@ public class Item{
   public Sprite getSprite(){
     return image;
   }
+  public Item copy() {
+    return new Item(image, name);
+  }
   
 }
