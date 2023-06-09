@@ -16,6 +16,7 @@ public class BattleGameState extends GameState {
   private int enemyPokemonOut = 0;
   
   private Button[] moveButtons;
+  private Button[] battleOptions;
   private boolean renderingButtons = false;
   private Move previousMove;
   
@@ -28,8 +29,19 @@ public class BattleGameState extends GameState {
   public BattleGameState() {
     super();
     
-    /* DEBUG ENEMY FOR TESTING */
     moveButtons = new Button[4];
+  }
+  
+  public void addUI(UI[] uis) {
+    for (UI ui : uis) {
+      UISys.getScreenUI().add(ui);
+    }
+  }
+  
+  public void clearUI(UI[] uis) {
+    for (UI ui : uis) {
+      UISys.getScreenUI().remove(ui);
+    }
   }
   
   public void draw() {
@@ -96,6 +108,44 @@ public class BattleGameState extends GameState {
     enemyPokemonOut = getFirstAlive(enemyPokemon);
     
     setPokemonMoves(player.getPokemon()[playerPokemonOut]);
+    
+    /* set up battle options */
+    battleOptions = new Button[]{
+      new Button(
+        0, height-300, width, 200,
+        "FIGHT",
+        color(255, 255, 255),
+        new Executable() {
+          public void run() {
+            clearUI(battleOptions);
+            addMoves();
+          }
+        }
+      ),
+      new Button(
+        0, height-100, width, 100,
+        "RUN",
+        color(255, 255, 255),
+        new Executable() {
+          public void run() {
+            clearUI(battleOptions);
+            
+            /* RUN AWAY */
+            UISys.getScreenUI().add(
+              new DialogueBox(
+                "Ran away!",
+                new Executable() {
+                  public void run() {
+                    end();
+                  }
+                }
+              )
+            );
+            
+          }
+        }
+      ),
+    };
   }
   
   public void end() {
@@ -128,9 +178,8 @@ public class BattleGameState extends GameState {
     if (battleProgress % 2 == 0) {
       setupEffects = false;
       if (!renderingButtons) {
-        for (Button b : moveButtons) {
-          UISys.getScreenUI().add(b);
-        }
+        /* ADD FIGHT MENU */
+        addUI(battleOptions);
         renderingButtons = true;
       }
     } else {
@@ -304,6 +353,12 @@ public class BattleGameState extends GameState {
     for (Button b : moveButtons) {
       if (b == null) continue;
       UISys.remove(b.getId());
+    }
+  }
+  
+  private void addMoves() {
+    for (Button b : moveButtons) {
+      UISys.getScreenUI().add(b);
     }
   }
   

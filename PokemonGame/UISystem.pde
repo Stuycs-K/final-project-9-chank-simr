@@ -59,9 +59,10 @@ public class UISystem{
       if (screenUI.get(i) == null) continue;
       String name = screenUI.get(i).getClass().getName();
       if (i == screenUI.size() - 1) {
-        returnStr += name;
+
+        returnStr += name.substring("PokemonGame".length() + 1);
       } else {
-        returnStr += name + ", ";
+        returnStr += name.substring("PokemonGame".length() + 1) + ", ";
       }
     }
     
