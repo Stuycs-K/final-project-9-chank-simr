@@ -11,6 +11,9 @@ public class Pokeball extends Item{
   public int getCatchRate(){
     return catchRate;
   }
+  public Pokemon getPokemon(){
+    return pokemon;
+  }
   
   //Returns true if the Pokemon is catched, and false otherwise
   public boolean useItem(Pokemon p){
