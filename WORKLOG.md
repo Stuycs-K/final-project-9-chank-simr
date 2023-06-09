@@ -114,3 +114,8 @@
 
 - created Pokeball class
 - deleted BerryOrPotion class and replaced with Potion class
+
+### 6/8/2023
+
+- added copying feature to all items
+- created Gag and BagGameState classes, and enabled use of BagGameState in MenuGameState
