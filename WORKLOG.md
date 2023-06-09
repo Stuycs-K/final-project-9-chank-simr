@@ -53,6 +53,12 @@
 - fixed excess vision bug
 - optimized rendering with RenderQueue class.
 
+### 6/8/2023
+
+- added wild_grass sprite to collection + gameboard
+- created wild pokemon encounters when walking on "wild_grass"
+- fixed BattleGameState pokemon switching/rendering bugs.
+
 ## Kevin Chan
 
 ### 5/22/23
