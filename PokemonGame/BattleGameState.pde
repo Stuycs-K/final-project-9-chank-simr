@@ -248,32 +248,43 @@ public class BattleGameState extends GameState {
   
   private void onPlayerDead() {
     // dead
-    if (isAlive(player.getPokemon())) {
-      /* SEND TO POKEMON SELECT MENU, BUT FOR NOW JUST RANDOMLY PICK */
-      
-      UISys.getScreenUI().add(
-        new DialogueBox(
-          "Player sent out " + player.getPokemon()[playerPokemonOut].getName() + "!",
-          new Executable() {
-            public void run() { 
+    clearMoves();
+    UISys.getScreenUI().add(
+      new DialogueBox(
+        player.getPokemon()[playerPokemonOut].getName() + " Fainted!",
+        new Executable() {
+          public void run() {
+            if (isAlive(player.getPokemon())) {
+              /* SEND TO POKEMON SELECT MENU, BUT FOR NOW JUST RANDOMLY PICK */
               playerPokemonOut = getFirstAlive(player.getPokemon());
-              battleProgress++; 
+              UISys.getScreenUI().add(
+                new DialogueBox(
+                  "Player sent out " + player.getPokemon()[playerPokemonOut].getName() + "!",
+                  new Executable() {
+                    public void run() { 
+                      setPokemonMoves(player.getPokemon()[playerPokemonOut]);
+                      battleProgress++; 
+                    }
+                  }
+                )
+              );
+            } else {
+              UISys.getScreenUI().add(
+                new DialogueBox(
+                  "Player blacked out!",
+                  new Executable() {
+                    public void run() {  
+                      end();
+                    }
+                  }
+                )
+              );
             }
           }
-        )
-      );
-    } else {
-      UISys.getScreenUI().add(
-        new DialogueBox(
-          "Player blacked out!",
-          new Executable() {
-            public void run() {  
-              end();
-            }
-          }
-        )
-      );
-    }
+        }
+      )
+    );
+    
   }
   
   
@@ -282,13 +293,18 @@ public class BattleGameState extends GameState {
     // player.getPokemon()[playerPokemonOut].useAttack(enemyAlive, move); <- DO THIS IN THE NEXT TURN BASED ON SPEED
     
     // clear move buttons from ui
+    clearMoves();
+    
+    previousMove = move;
+    battleProgress++;
+  }
+  
+  private void clearMoves() {
+    // clear move buttons from ui
     for (Button b : moveButtons) {
       if (b == null) continue;
       UISys.remove(b.getId());
     }
-    
-    previousMove = move;
-    battleProgress++;
   }
   
   private void setPokemonMoves(Pokemon p) {
@@ -328,7 +344,7 @@ public class BattleGameState extends GameState {
   private int getFirstAlive(Pokemon[] pokemon) {
     int alive = 0;
     // find first alive pokemon of enemy
-    for (int i = 0; i < enemyPokemon.length; ++i) {
+    for (int i = 0; i < pokemon.length; ++i) {
       if (pokemon[i].getHP() > 0) {
         alive = i;
         break;
