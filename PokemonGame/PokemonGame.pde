@@ -39,7 +39,8 @@ void setup() {
     new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, 0, 0X00FF00),
     new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
     new Sprite("assets/player.png", "PLAYER", 1, 1, 1, -1),
-    new Sprite("assets/player.png", "NPC", 1, 1, 0, -2)
+    new Sprite("assets/player.png", "NPC", 1, 1, 0, -2),
+    new Sprite("assets/tiles/wildgrass.png", "WILD_GRASS", 1, 1, 0, 0X0000FF)
   }; // sprites stored in memory
   
   // pokedex
