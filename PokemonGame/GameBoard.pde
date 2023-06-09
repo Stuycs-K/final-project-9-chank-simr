@@ -71,4 +71,16 @@ public class GameBoard {
     
     return result;
   }
+  
+  public Sprite getTileSprite(int r, int c) {
+    for (Sprite s : sprites) {
+      if (s.getHex() == tiles[r][c]) {
+        
+        /* render based on walk delays */
+        return s;
+      }
+    }
+    
+    return null;
+  }
 }

@@ -42,30 +42,38 @@ public class Player extends MonoBehaviour {
   public void move() {
     if (moving || pause) return;
     
-    
 
     /* LOOK CODE */
-    if (keyboardInput.isPressed(keyboardInput.PUP)) {
+    if (keyboardInput.isPressed(Controller.PUP)) {
       lookVector[0] = max(lookVector[0] - 1, -1);
       lookVector[1] = 0;
       moving = true;
     }
-    if (keyboardInput.isPressed(keyboardInput.PLEFT)) {
+    if (keyboardInput.isPressed(Controller.PLEFT)) {
       lookVector[0] = 0;
       lookVector[1] = max(lookVector[1] - 1, -1);
       moving = true;
     }
-    if (keyboardInput.isPressed(keyboardInput.PDOWN)) {
+    if (keyboardInput.isPressed(Controller.PDOWN)) {
       lookVector[0] = min(lookVector[0] + 1, 1);
       lookVector[1] = 0;
       moving = true;
     }
-    if (keyboardInput.isPressed(keyboardInput.PRIGHT)) {
+    if (keyboardInput.isPressed(Controller.PRIGHT)) {
       lookVector[0] = 0;
       lookVector[1] = min(lookVector[1] + 1, 1);
       moving = true;
     }
-
+    
+    // wild pokemon battle if in tall grass
+    if (map.getTileSprite(row, col).getName().equals("WILD_GRASS")) {
+      if (Math.random() < 0.08) {
+        moving = false;
+        Pokemon randomPokemon = pokedex.getRandomPokemon();
+        ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ randomPokemon }, "Wild " + randomPokemon.getName());
+      }
+    }
+    
     // collision detection)
     if (moving) {
       int endRow = row + lookVector[0];
@@ -73,12 +81,12 @@ public class Player extends MonoBehaviour {
 
       if (!map.canWalkOn(endRow, endCol)) moving = false;
       ArrayList<MonoBehaviour> gameObjects = gameStates[gameState].getGameObjects();
-    for (int i=1; i<gameObjects.size(); i++){
-      if (gameObjects.get(i).getRow() == getRow() + lookVector[0] && gameObjects.get(i).getCol() == getCol() + lookVector[1]){
-        moving = false;
-        return;
+      for (int i=1; i<gameObjects.size(); i++){
+        if (gameObjects.get(i).getRow() == getRow() + lookVector[0] && gameObjects.get(i).getCol() == getCol() + lookVector[1]){
+          moving = false;
+          return;
+        }
       }
-    }
     }
   }
   private void interact() {

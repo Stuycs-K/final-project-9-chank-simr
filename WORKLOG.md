@@ -53,6 +53,12 @@
 - fixed excess vision bug
 - optimized rendering with RenderQueue class.
 
+### 6/8/2023
+
+- added wild_grass sprite to collection + gameboard
+- created wild pokemon encounters when walking on "wild_grass"
+- fixed BattleGameState pokemon switching/rendering bugs.
+
 ## Kevin Chan
 
 ### 5/22/23
@@ -104,3 +110,13 @@
 - when a specific Pokemon is clicked after the Pokemon button within Menu, shows that Pokemon's stats
 - added a new GameState to show Pokemon stats
 - displayed Pokemon sprites in menu and individual PokemonStatsGameState
+
+### 6/5/2023
+
+- created Item class and BerryOrPotion subclass
+- created ItemDictionary class to store all possible items
+
+### 6/6/2023
+
+- created Pokeball class
+- deleted BerryOrPotion class and replaced with Potion class
