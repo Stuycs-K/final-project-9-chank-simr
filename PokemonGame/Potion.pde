@@ -20,6 +20,6 @@ public class Potion extends Item{
     }
   }
   public Item copy() {
-    return new Potion(image, name, healAmount);
+    return new Potion(getSprite(), getName(), healAmount);
   }
 }
