@@ -14,20 +14,20 @@ public class BagGameState extends GameState {
     
     /*DRAW BAG ICON*/    
     fill (48, 213, 200);
-    rect(10, 160, 200, 100);
+    rect(10, 160, 300, 70);
     fill(0);
     textSize(50);
-    text("Bag", 60, 220);
+    text("Bag", 110, 210);
     textSize(20);
 
     /* DRAW BAG IMAGE*/
-    /*
-    PImage bagImage = pokemon.getImage().getImage().copy();
-    bagImage.resize(0, 50);
-    image(bagImage, 60, 220);
-    */
+    PImage bagImage = getSprite("PLAYER").getImage().copy();
+    bagImage.resize(250, 0);
+    image(bagImage, 40, 300);
     
-    
+    /* DRAW ITEMS*/
+    fill (124, 252, 0);
+    rect(400, 100, 300, 300);
     
     
     
