@@ -3,8 +3,8 @@ public class Pokeball extends Item{
   private Pokemon pokemon;
   
   //info should be from (0,100]
-  public Pokeball (Sprite i, String s, int info){
-    super(i, s);
+  public Pokeball (Sprite i, String s, String d, int info){
+    super(i, s, d);
     catchRate = info;
     pokemon = null;
   }

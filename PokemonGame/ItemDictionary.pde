@@ -6,7 +6,8 @@ public class ItemDictionary {
       new Potion(getSprite("PLAYER"), "Potion", 20),
       new Potion(getSprite("PLAYER"), "Super Potion", 50),
       new Potion(getSprite("PLAYER"), "Hyper Potion", 200), 
-      new Pokeball(getSprite("PLAYER"), "Normal Pokeball", 50)
+      new Pokeball(getSprite("PLAYER"), "Poke Ball", "A device for catching wild Pokemon. It's thrown like a ball at a Pokemon, comfortably encapsulating its target.", 50),
+      new Pokeball(getSprite("PLAYER"), "Great Ball", "A good, high-performance Poke Ball that provides a higher catch rate than a standard Poke Ball.", 75)
     };
   }
   
