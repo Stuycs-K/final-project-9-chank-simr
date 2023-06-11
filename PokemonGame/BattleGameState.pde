@@ -462,8 +462,11 @@ public class BattleGameState extends GameState {
   }
   
   public boolean isAlive(Pokemon[] p) {
-    for (Pokemon pokemon : p) 
-      if (pokemon.getHP() > 0) return true;
+    for (int i = 0; i < p.length; ++i) {
+      if (p[i] == null) continue;
+      if (p[i].getHP() > 0) return true;
+    }
+
     return false;
   }
   
@@ -471,6 +474,7 @@ public class BattleGameState extends GameState {
     int alive = 0;
     // find first alive pokemon of enemy
     for (int i = 0; i < pokemon.length; ++i) {
+      if (pokemon[i] == null) continue;
       if (pokemon[i].getHP() > 0) {
         alive = i;
         break;
