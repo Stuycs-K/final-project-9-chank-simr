@@ -40,4 +40,15 @@ public class Bag {
     println("Bag.remove(String p): none of the specified item left");
     return null;
   }
+  
+  public Potion getPotion(String p) {
+    for (int i = 0; i < potions.size(); i++) {
+      if (potions.get(i) == null) continue;
+      if (potions.get(i).getName().equals(p)) {
+        return potions.get(i);
+      }
+    }
+    
+    return null;
+  }
 }
