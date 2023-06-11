@@ -66,7 +66,7 @@ public class MenuGameState extends GameState {
     UISys.getScreenUI().add(
       new Button(
       10, 400, 200, 100,
-      "Item",
+      "Bag",
       color(255, 255, 255),
       new Executable() {
       public void run() {

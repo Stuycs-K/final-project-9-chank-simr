@@ -75,6 +75,7 @@ void setup() {
   Potion superPotion = possibleItems.getPotion("Super Potion").copy();
   playerBag.addPotion(superPotion);
   money = 1000;
+
   gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(playerBag), new ShopGameState()};
 
   /* INITIALIZE UI SYSTEM */
