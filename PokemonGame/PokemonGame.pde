@@ -39,7 +39,10 @@ void setup() {
   sprites = new Sprite[]{
     new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, 0, 0X00FF00),
     new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
-    new Sprite("assets/player.png", "PLAYER", 1, 1, 1, -1),
+    new Sprite("assets/player_front.png", "PLAYER_FRONT", 1, 1, 0, -1),
+    new Sprite("assets/player_back.png", "PLAYER_BACK", 1, 1, 0, -1),
+    new Sprite("assets/player_right.png", "PLAYER_RIGHT", 1, 1, 0, -1),
+    new Sprite("assets/player_left.png", "PLAYER_LEFT", 1, 1, 0, -1),
     new Sprite("assets/player.png", "NPC", 1, 1, 0, -2),
     new Sprite("assets/tiles/wildgrass.png", "WILD_GRASS", 1, 1, 0, 0X0000FF)
   }; // sprites stored in memory
