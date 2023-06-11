@@ -19,6 +19,7 @@ public class BattleGameState extends GameState {
   private Button[] battleOptions;
   private boolean renderingButtons = false;
   private Move previousMove;
+  //private int moneyGained = 0;
   
   /* EFFECT VARIABLES */
   private boolean setupEffects = false;
@@ -167,7 +168,7 @@ public class BattleGameState extends GameState {
     
     playerHealth = null;
     enemyHealth = null;
-    
+        
     /* DIALOGUE BOXES FOR STATS/XP/WIN_MESSAGE */
     /* TRY DOING A FADE-OUT ANIMATION FIRST BEFORE GOING BACK */
     
@@ -278,7 +279,7 @@ public class BattleGameState extends GameState {
           new Executable() {
             public void run() { 
               enemyPokemonOut = getFirstAlive(enemyPokemon);
-              battleProgress++; 
+              battleProgress++;
             }
           }
         )
