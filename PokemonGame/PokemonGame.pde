@@ -14,7 +14,9 @@ RenderQueue renderQueue;
 
 Controller keyboardInput;
 Player player;
-Bag playerBag = new Bag();
+Bag playerBag;
+
+ItemDictionary possibleItems;
 
 /* DEFAULT GAME STATE VARIABLES */
 Camera camera;
@@ -49,6 +51,10 @@ void setup() {
   
   keyboardInput = new Controller();
   renderQueue = new RenderQueue(5);
+  possibleItems = new ItemDictionary();
+   Potion normalPotion = possibleItems.getPotion("Potion").copy();
+   playerBag = new Bag();
+   playerBag.addPotion(normalPotion);
   gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(playerBag)};
 
   /* INITIALIZE UI SYSTEM */

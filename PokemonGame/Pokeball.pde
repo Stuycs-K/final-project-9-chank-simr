@@ -31,7 +31,7 @@ public class Pokeball extends Item{
       else return false;
     }
   }
-  public Item copy() {
+  public Pokeball copy() {
     Pokeball newPokeball = new Pokeball(getSprite(), getName(), getDescription(), catchRate);
     newPokeball.setPokemon (pokemon);
     return newPokeball;

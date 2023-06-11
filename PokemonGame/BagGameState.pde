@@ -63,12 +63,19 @@ public class BagGameState extends GameState {
       for (int j=0; j<playerPotions.size(); j++){
         if (playerPotions.get(j).getName().equals(possibleItems.potions[i].getName()) ) count++;
       }
+      String name = possibleItems.potions[i].getName();
       UISys.getScreenUI().add(
         new ItemInMenu(
         width/2-30, 180 + i* (50 + 20),
         possibleItems.potions[i],
         new Executable() {
         public void run() {
+          if (playerBag.removePotion(name) == null){
+            return;
+          }
+          else{
+            System.out.println("k");
+          }
           /*
           PokemonStatsGameState newGameState = new PokemonStatsGameState(p);
           gameStates[3] = newGameState;
@@ -88,7 +95,7 @@ public class BagGameState extends GameState {
       }
       UISys.getScreenUI().add(
         new ItemInMenu(
-        width/2-30, 180 + (UISys.getScreenUI().size()-3) * (180 + i* (50 + 20) )  + i* (50 + 20),
+        width/2-30, 390 + i* (50 + 20),
         possibleItems.pokeballs[i],
         new Executable() {
         public void run() {
@@ -105,21 +112,7 @@ public class BagGameState extends GameState {
     }
     
   }
-  /*
-  private void scroll() {
-   if (keyboardInput.isDown(Controller.PUP)) {
-   ArrayList<MonoBehaviour> gameObjects = gameStates[GameState.DEFAULT].getGameObjects();
-   for (int i=1; i<gameObjects.size(); i++) {
-   if (row + lookVector[0] == gameObjects.get(i).getRow() && col + lookVector[1] == gameObjects.get(i).getCol()) {
-   NPC npc = (NPC)gameObjects.get(i);
-   npc.interact();
-   }
-   }
-   }
-   else if (keyboardInput.isDown(Controller.PDOWN)) {
-   }
-   }
-   */
+
   public void removeButtons() {
     while (UISys.getScreenUI().size()>6) {
       UISys.getScreenUI().remove(UISys.getScreenUI().size()-1);

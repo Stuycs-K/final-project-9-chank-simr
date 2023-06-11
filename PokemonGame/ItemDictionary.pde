@@ -14,11 +14,15 @@ public class ItemDictionary {
     };
   }
   
-  public Item getItem (String name) {
-    for (Item item : potions) {
+  public Potion getPotion (String name) {
+    for (Potion item : potions) {
       if (item.getName().equals(name)) return item;
     }
-    for (Item item : pokeballs) {
+    return null;
+  }
+  
+  public Pokeball getPokeball(String name){
+    for (Pokeball item : pokeballs) {
       if (item.getName().equals(name)) return item;
     }
     return null;
