@@ -12,16 +12,16 @@ public class MenuGameState extends GameState {
     }
     gameState = GameState.MENU;
     
-    //Pokedex
+    //Shop
     removeButtons();
     UISys.getScreenUI().add(
       new Button(
       10, 160, 200, 100,
-      "Pokedex",
+      "Shop",
       color(255, 255, 255),
       new Executable() {
       public void run() {
-        end();
+        ((ShopGameState) gameStates[GameState.SHOP]).start();
       }
     }
     )
