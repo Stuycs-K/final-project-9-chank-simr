@@ -3,7 +3,11 @@ public class Player extends MonoBehaviour {
   private float walkProgress;
   private int[] lookVector;
   private final float walkDelay = 5; // in frames (game is 30fps)
-  private Sprite playerSprite;
+  private Sprite playerFront;
+  private Sprite playerLeft;
+  private Sprite playerRight;
+  private Sprite playerBack;
+  
   private boolean pause = false;
   private Pokemon[] party;
 
@@ -13,7 +17,11 @@ public class Player extends MonoBehaviour {
     if (player == null) {
       lookVector = new int[]{1, 0}; // looking down
       walkProgress = walkDelay;
-      playerSprite = getSprite("PLAYER");
+      playerFront = getSprite("PLAYER_FRONT");
+      playerLeft = getSprite("PLAYER_LEFT");
+      playerRight = getSprite("PLAYER_RIGHT");
+      playerBack = getSprite("PLAYER_BACK");
+      
       party = new Pokemon[]{pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Squirtle"), pokedex.getPokemon("Bulbasaur"), pokedex.getPokemon("Charmander")};
     } else {
       println("Error: instance of Player already exists");
@@ -36,7 +44,18 @@ public class Player extends MonoBehaviour {
 
   public void render() {
     // render player sprite at the center of the screen
-    playerSprite.render(camera.getVision().length / 2, camera.getVision()[0].length / 2);
+    Sprite currentSprite = playerFront;
+    
+    if (lookVector[0] == 1 && lookVector[1] == 0) {
+      currentSprite = playerFront;
+    } else if (lookVector[0] == -1 && lookVector[1] == 0) {
+      currentSprite = playerBack;
+    } else if (lookVector[0] == 0 && lookVector[1] == 1) {
+      currentSprite = playerRight;
+    } else if (lookVector[0] == 0 && lookVector[1] == -1) {
+      currentSprite = playerLeft;
+    }
+    currentSprite.render(camera.getVision().length / 2, camera.getVision()[0].length / 2);
   }
 
   public void move() {

@@ -23,7 +23,7 @@ public class BagGameState extends GameState {
     textSize(20);
 
     /* DRAW BAG IMAGE*/
-    PImage bagImage = getSprite("PLAYER").getImage().copy();
+    PImage bagImage = getSprite("PLAYER_FRONT").getImage().copy();
     bagImage.resize(250, 0);
     image(bagImage, 40, 300);
 
