@@ -30,8 +30,9 @@ public class ShopGameState extends GameState {
     rect(480, 170, width/2-20, height-height/3-20);
     
     /* DRAW MONEY*/
-    textSize(50);
-    text("Current Money: $" + money, 100, 210);
+    fill(0);
+    textSize(30);
+    text("Current Money: $" + money, 700, 100);
     textSize(20);
   }
   public void start() {
@@ -64,24 +65,20 @@ public class ShopGameState extends GameState {
     //Items
     ItemDictionary possibleItems = new ItemDictionary();
     for (int i=0; i<possibleItems.potions.length; i++) {
-      String name = possibleItems.potions[i].getName();
-      String desc = possibleItems.potions[i].getDescription();
       Potion curPotion = possibleItems.potions[i];
-      createItemBox(i, count, name, desc, curPotion);
+      createItemBox(i, curPotion);
     }
-    
     for (int i=0; i<possibleItems.pokeballs.length; i++) {
+      Pokeball curPokeball = possibleItems.pokeballs[i];
+      createItemBox(i, curPokeball);
+    }
+      /*
       UISys.getScreenUI().add(
         new ItemInMenu(
         width/2-30, 390 + i* (50 + 20),
         possibleItems.pokeballs[i],
         new Executable() {
         public void run() {
-          /*
-          PokemonStatsGameState newGameState = new PokemonStatsGameState(p);
-           gameStates[3] = newGameState;
-           newGameState.start();
-           */
         }
       }
       ,
@@ -90,6 +87,7 @@ public class ShopGameState extends GameState {
         )
         );
     }
+    */
   }
 
   public void removeButtons() {
@@ -97,7 +95,8 @@ public class ShopGameState extends GameState {
       UISys.getScreenUI().remove(UISys.getScreenUI().size()-1);
     }
   }
-  public void createItemBox(int i, int count, String name, String desc, Potion curPotion) {
+  public void createItemBox(int i, Potion curPotion) {
+    int cost = 50+i*50;
     UISys.getScreenUI().add(
       new ItemInMenu(
       width/2-30, 180 + i* (50 + 20),
@@ -105,20 +104,44 @@ public class ShopGameState extends GameState {
       new Executable() {
       public void run() {
         if (UISys.getScreenUI().size()<9) {
-          if (playerBag.removePotion(name) == null) {
-            return;
-          } else {
-            canExit = false;
-            createDialogueBox(desc, curPotion);
+          if (money >= cost){
+            money -= cost;
+            playerBag.addPotion(curPotion);
           }
+          //canExit = false;
+          //createDialogueBox(desc, curPotion);
         }
       }
     }
     ,
-      count
+      cost
       )
       );
   }
+  public void createItemBox(int i, Pokeball curPokeball) {
+    int cost = 50+i*50;
+    UISys.getScreenUI().add(
+      new ItemInMenu(
+      width/2-30, 390 + i* (50 + 20),
+      possibleItems.pokeballs[i],
+      new Executable() {
+      public void run() {
+        if (UISys.getScreenUI().size()<9) {
+          if (money >= cost){
+            money -= cost;
+            playerBag.addPokeball(curPokeball);
+          }
+          //canExit = false;
+          //createDialogueBox(desc, curPotion);
+        }
+      }
+    }
+    ,
+      cost
+      )
+      );
+  }
+  /*
   public void createDialogueBox(String desc, Potion curPotion) {
     DialogueBox dBox = new DialogueBox(
       desc,
@@ -137,32 +160,7 @@ public class ShopGameState extends GameState {
     );
     UISys.getScreenUI().add(dBox);
   }
-  public void createPokemon(int x, Pokemon pok, Potion pot) {
-    UISys.getScreenUI().add(
-      new PokemonInBag(
-      width/2-30, 180 + x* (50 + 20),
-      pok,
-      new Executable() {
-      public void run() {
-        pot.useItem(pok);
-        createSecondDialogueBox("" + pok.getName() + " has been healed for " + pot.getHealAmount() + " HP.");
-      }
-    }
-    )
-    );
-  }
-  public void createSecondDialogueBox(String desc){
-    DialogueBox dBox = new DialogueBox(
-      desc,
-      new Executable() {
-      public void run() {
-        ((BagGameState) gameStates[GameState.BAG]).start();
-        canExit = true;
-      }
-    }
-    );
-    UISys.getScreenUI().add(dBox);
-  }
+  */
   public void end() {
     while (UISys.getScreenUI().size()>2) {
       UISys.getScreenUI().remove(UISys.getScreenUI().size()-1);

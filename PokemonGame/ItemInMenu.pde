@@ -21,7 +21,7 @@ public class ItemInMenu extends Button {
     text(item.getName(), x+75, y+35);
     
     /* WRITE ITEM COUNT*/
-    text("x " + count, x + 470 - 50, y+35);
+    text("x " + count, x + 470 - 80, y+35);
     
     /* DRAW ITEM SPRITE*/
     PImage spriteImage = item.getSprite().getImage().copy();
