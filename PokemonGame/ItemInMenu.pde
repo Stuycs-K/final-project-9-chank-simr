@@ -27,6 +27,6 @@ public class ItemInMenu extends Button {
     PImage spriteImage = item.getSprite().getImage().copy();
     spriteImage.resize(0, 40);
     image(spriteImage, x+5, y+5);
-    
+    lifetime = max(lifetime-1, 0);
   }
 }
