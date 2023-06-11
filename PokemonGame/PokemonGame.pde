@@ -52,9 +52,11 @@ void setup() {
   keyboardInput = new Controller();
   renderQueue = new RenderQueue(5);
   possibleItems = new ItemDictionary();
+  playerBag = new Bag();
    Potion normalPotion = possibleItems.getPotion("Potion").copy();
-   playerBag = new Bag();
    playerBag.addPotion(normalPotion);
+   Potion superPotion = possibleItems.getPotion("Super Potion").copy();
+   playerBag.addPotion(superPotion);
   gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(playerBag)};
 
   /* INITIALIZE UI SYSTEM */
