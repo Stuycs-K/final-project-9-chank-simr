@@ -69,11 +69,13 @@ void setup() {
   renderQueue = new RenderQueue(5);
   possibleItems = new ItemDictionary();
   playerBag = new Bag();
-   Potion normalPotion = possibleItems.getPotion("Potion").copy();
-   playerBag.addPotion(normalPotion);
-   Potion superPotion = possibleItems.getPotion("Super Potion").copy();
-   playerBag.addPotion(superPotion);
-   money = 1000;
+
+  Potion normalPotion = possibleItems.getPotion("Potion").copy();
+  playerBag.addPotion(normalPotion);
+  Potion superPotion = possibleItems.getPotion("Super Potion").copy();
+  playerBag.addPotion(superPotion);
+  money = 1000;
+
   gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(playerBag), new ShopGameState()};
 
   /* INITIALIZE UI SYSTEM */
