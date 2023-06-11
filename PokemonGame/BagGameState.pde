@@ -1,11 +1,13 @@
 public class BagGameState extends GameState {
   private ArrayList <Potion> playerPotions;
   private ArrayList <Pokeball> playerPokeballs;
+  boolean canExit;
 
   public BagGameState(Bag b) {
     super();
     playerPotions = b.getPotions();
     playerPokeballs = b.getPokeballs();
+    boolean canExit = true;
   }
   public void draw() {
     /*CHANGE BACKGROUND COLOR*/
@@ -52,7 +54,7 @@ public class BagGameState extends GameState {
       color(255, 255, 255),
       new Executable() {
       public void run() {
-        end();
+        if (canExit) end();
       }
     }
     )
@@ -112,6 +114,7 @@ public class BagGameState extends GameState {
           if (playerBag.removePotion(name) == null) {
             return;
           } else {
+            canExit = false;
             createDialogueBox(desc, curPotion);
           }
         }
@@ -148,11 +151,23 @@ public class BagGameState extends GameState {
       new Executable() {
       public void run() {
         pot.useItem(pok);
-        ((BagGameState) gameStates[GameState.BAG]).start();
+        createSecondDialogueBox("" + pok.getName() + " has been healed for " + pot.getHealAmount() + " HP.");
       }
     }
     )
     );
+  }
+  public void createSecondDialogueBox(String desc){
+    DialogueBox dBox = new DialogueBox(
+      desc,
+      new Executable() {
+      public void run() {
+        ((BagGameState) gameStates[GameState.BAG]).start();
+        canExit = true;
+      }
+    }
+    );
+    UISys.getScreenUI().add(dBox);
   }
   public void end() {
     while (UISys.getScreenUI().size()>2) {
