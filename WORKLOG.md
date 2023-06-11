@@ -59,6 +59,11 @@
 - created wild pokemon encounters when walking on "wild_grass"
 - fixed BattleGameState pokemon switching/rendering bugs.
 
+### 6/9/2023
+
+- created battle options (fight and run)
+- fixed forced wild encounter bug after consecutive wild encounters
+
 ## Kevin Chan
 
 ### 5/22/23
@@ -120,3 +125,8 @@
 
 - created Pokeball class
 - deleted BerryOrPotion class and replaced with Potion class
+
+### 6/8/2023
+
+- added copying feature to all items
+- created Gag and BagGameState classes, and enabled use of BagGameState in MenuGameState
