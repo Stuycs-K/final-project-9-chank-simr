@@ -74,6 +74,7 @@
 - added npc sprites + look direction
 - added pokemon sprites
 - created player relative rendering in Sprite class.
+- created catching pokemon
 
 ## Kevin Chan
 
@@ -146,3 +147,8 @@
 
 - completed Potion usage within Item within MenuGameState
 - began working on usage of Pokeballs
+
+### 6/11/2023
+
+- created ShopGameState, playerMoney, and the ability to buy items
+- added Sprites for all items and other images in Shop and Item

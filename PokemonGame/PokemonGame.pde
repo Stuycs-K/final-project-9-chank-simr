@@ -59,7 +59,13 @@ void setup() {
     new Sprite("assets/pokemon/squirtle_back.png", "SQUIRTLE_BACK", 12, 12, 1, -1),
     new Sprite("assets/pokemon/bulbasaur_front.png", "BULBASAUR_FRONT", 12, 12, 1, -1),
     new Sprite("assets/pokemon/bulbasaur_back.png", "BULBASAUR_BACK", 12, 12, 1, -1),
-    new Sprite("assets/battlebg.jpg", "BATTLE_BACKGROUND", width/TILE_WIDTH, height/TILE_WIDTH, 0, -1)
+    new Sprite("assets/battlebg.jpg", "BATTLE_BACKGROUND", width/TILE_WIDTH, height/TILE_WIDTH, 0, -1),
+    new Sprite("assets/bag.png", "BAG", 12, 0, 1, -1),
+    new Sprite("assets/playerBag.png", "PLAYER_BAG", 12, 0, 1, -1),
+    new Sprite("assets/potion.png", "POTION", 12, 0, 1, -1),
+    new Sprite("assets/super_potion.png", "SUPER_POTION", 12, 0, 1, -1),
+    new Sprite("assets/hyper_potion.png", "HYPER_POTION", 12, 0, 1, -1),
+    new Sprite("assets/pokeball.png", "POKEBALL", 12, 0, 1, -1)
   }; // sprites stored in memory
   
   // pokedex
