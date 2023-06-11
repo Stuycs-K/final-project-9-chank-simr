@@ -1,5 +1,3 @@
-import java.util.PriorityQueue;
-
 /*
 This is a recreation of Pokemon in Processing
  Recreation of Unity APIs in Processing
@@ -47,7 +45,10 @@ void setup() {
     new Sprite("assets/player_back.png", "PLAYER_BACK", 1, 1, 0, -1),
     new Sprite("assets/player_right.png", "PLAYER_RIGHT", 1, 1, 0, -1),
     new Sprite("assets/player_left.png", "PLAYER_LEFT", 1, 1, 0, -1),
-    new Sprite("assets/player.png", "NPC", 1, 1, 0, -2),
+    new Sprite("assets/npc_front.png", "NPC_FRONT", 1, 1, 0, -2),
+    new Sprite("assets/npc_back.png", "NPC_BACK", 1, 1, 0, -3),
+    new Sprite("assets/npc_left.png", "NPC_LEFT", 1, 1, 0, -4),
+    new Sprite("assets/npc_right.png", "NPC_RIGHT", 1, 1, 0, -5),
     new Sprite("assets/tiles/wildgrass.png", "WILD_GRASS", 1, 1, 0, 0X0000FF),
     new Sprite("assets/pokemon/pikachu_front.png", "PIKACHU_FRONT", 12, 12, 1, -1),
     new Sprite("assets/pokemon/pikachu_back.png", "PIKACHU_BACK", 12, 12, 1, -1),
