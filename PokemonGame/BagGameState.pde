@@ -7,7 +7,7 @@ public class BagGameState extends GameState {
     super();
     playerPotions = b.getPotions();
     playerPokeballs = b.getPokeballs();
-    boolean canExit = true;
+    canExit = true;
   }
   public void draw() {
     /*CHANGE BACKGROUND COLOR*/
