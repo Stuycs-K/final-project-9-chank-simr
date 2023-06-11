@@ -129,4 +129,9 @@
 ### 6/8/2023
 
 - added copying feature to all items
-- created Gag and BagGameState classes, and enabled use of BagGameState in MenuGameState
+- created Bag and BagGameState classes, and enabled use of BagGameState in MenuGameState
+
+### 6/10/2023
+
+- completed Potion usage within Item within MenuGameState
+- began working on usage of Pokeballs
