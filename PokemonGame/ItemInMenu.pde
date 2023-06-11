@@ -28,5 +28,6 @@ public class ItemInMenu extends Button {
     spriteImage.resize(0, 40);
     image(spriteImage, x+5, y+5);
     
+    lifetime = max(lifetime-1, 0);
   }
 }
