@@ -111,11 +111,11 @@ public class BagGameState extends GameState {
       new Executable() {
       public void run() {
         if (UISys.getScreenUI().size()<9) {
-          if (playerBag.removePotion(name) == null) {
+          if (playerBag.getPotion(name) == null) {
             return;
           } else {
             canExit = false;
-            createDialogueBox(desc, curPotion);
+            createDialogueBox(desc, curPotion, name);
           }
         }
       }
@@ -125,7 +125,7 @@ public class BagGameState extends GameState {
       )
       );
   }
-  public void createDialogueBox(String desc, Potion curPotion) {
+  public void createDialogueBox(String desc, Potion curPotion, String name) {
     DialogueBox dBox = new DialogueBox(
       desc,
       new Executable() {
@@ -134,24 +134,29 @@ public class BagGameState extends GameState {
           UISys.getScreenUI().remove(UISys.getScreenUI().size()-1);
         }
         Pokemon[] party = player.getPokemon();
-        for (int x=0; x<party.length; x++) {
+        for (int x=0; x<player.numPokemon(); x++) {
           Pokemon curPokemon = party[x];
-          createPokemon(x, curPokemon, curPotion);
+          createPokemon(x, curPokemon, curPotion, name);
         }
       }
     }
     );
     UISys.getScreenUI().add(dBox);
   }
-  public void createPokemon(int x, Pokemon pok, Potion pot) {
+  public void createPokemon(int x, Pokemon pok, Potion pot, String name) {
     UISys.getScreenUI().add(
       new PokemonInBag(
       width/2-30, 180 + x* (50 + 20),
       pok,
       new Executable() {
       public void run() {
-        pot.useItem(pok);
-        createSecondDialogueBox("" + pok.getName() + " has been healed for " + pot.getHealAmount() + " HP.");
+        if (pok.getHP() == pok.getMaxHP()) {
+          createSecondDialogueBox(pok.getName() + " is already full health.");
+        } else {
+          pot.useItem(pok);
+          playerBag.removePotion(name);
+          createSecondDialogueBox(pok.getName() + " has been healed for " + pot.getHealAmount() + " HP.");
+        }
       }
     }
     )
