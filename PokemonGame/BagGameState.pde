@@ -60,37 +60,43 @@ public class BagGameState extends GameState {
     ItemDictionary possibleItems = new ItemDictionary();
     for (int i=0; i<possibleItems.potions.length; i++) {
       int count = 0;
-      for (int j=0; j<playerPotions.size(); j++){
+      for (int j=0; j<playerPotions.size(); j++) {
         if (playerPotions.get(j).getName().equals(possibleItems.potions[i].getName()) ) count++;
       }
       String name = possibleItems.potions[i].getName();
+      String desc = possibleItems.potions[i].getDescription();
       UISys.getScreenUI().add(
         new ItemInMenu(
         width/2-30, 180 + i* (50 + 20),
         possibleItems.potions[i],
         new Executable() {
         public void run() {
-          if (playerBag.removePotion(name) == null){
+          if (playerBag.removePotion(name) == null) {
             return;
+          } else {
+
+            DialogueBox dBox = new DialogueBox(
+              desc,
+              new Executable() {
+              public void run() {
+                System.out.println("k");
+              }
+            }
+            );
+            UISys.getScreenUI().add(dBox);
+
           }
-          else{
-            System.out.println("k");
-          }
-          /*
-          PokemonStatsGameState newGameState = new PokemonStatsGameState(p);
-          gameStates[3] = newGameState;
-          newGameState.start();
-          */
         }
-      },
-      count
-      )
-      );
+      }
+      ,
+        count
+        )
+        );
     }
-    
+
     for (int i=0; i<possibleItems.pokeballs.length; i++) {
       int count = 0;
-      for (int j=0; j<playerPokeballs.size(); j++){
+      for (int j=0; j<playerPokeballs.size(); j++) {
         if (playerPokeballs.get(j).getName().equals(possibleItems.pokeballs[i].getName()) ) count++;
       }
       UISys.getScreenUI().add(
@@ -101,16 +107,16 @@ public class BagGameState extends GameState {
         public void run() {
           /*
           PokemonStatsGameState newGameState = new PokemonStatsGameState(p);
-          gameStates[3] = newGameState;
-          newGameState.start();
-          */
+           gameStates[3] = newGameState;
+           newGameState.start();
+           */
         }
-      },
-      count
-      )
-      );
+      }
+      ,
+        count
+        )
+        );
     }
-    
   }
 
   public void removeButtons() {
