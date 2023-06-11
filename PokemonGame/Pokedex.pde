@@ -47,6 +47,6 @@ public class Pokedex {
   }
   
   public Pokemon getRandomPokemon() {
-    return pokemon[(int) (Math.random() * pokemon.length)];
+    return pokemon[(int) (Math.random() * pokemon.length)].copy();
   }
 }
