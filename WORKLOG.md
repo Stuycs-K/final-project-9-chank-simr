@@ -64,6 +64,10 @@
 - created battle options (fight and run)
 - fixed forced wild encounter bug after consecutive wild encounters
 
+### 6/10/2023
+- added better map sprites
+- player sprites based on look direction (up, left, right, down)
+
 ## Kevin Chan
 
 ### 5/22/23
@@ -129,4 +133,9 @@
 ### 6/8/2023
 
 - added copying feature to all items
-- created Gag and BagGameState classes, and enabled use of BagGameState in MenuGameState
+- created Bag and BagGameState classes, and enabled use of BagGameState in MenuGameState
+
+### 6/10/2023
+
+- completed Potion usage within Item within MenuGameState
+- began working on usage of Pokeballs

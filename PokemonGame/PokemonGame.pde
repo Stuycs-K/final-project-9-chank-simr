@@ -14,7 +14,9 @@ RenderQueue renderQueue;
 
 Controller keyboardInput;
 Player player;
-Bag bag = new Bag();
+Bag playerBag;
+
+ItemDictionary possibleItems;
 
 /* DEFAULT GAME STATE VARIABLES */
 Camera camera;
@@ -40,6 +42,7 @@ void setup() {
     new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, 0, 0X00FF00),
     new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
     new Sprite("assets/player_front.png", "PLAYER_FRONT", 1, 1, 0, -1),
+    new Sprite("assets/player.png", "PLAYER", 1, 1, 0, -1),
     new Sprite("assets/player_back.png", "PLAYER_BACK", 1, 1, 0, -1),
     new Sprite("assets/player_right.png", "PLAYER_RIGHT", 1, 1, 0, -1),
     new Sprite("assets/player_left.png", "PLAYER_LEFT", 1, 1, 0, -1),
@@ -52,7 +55,13 @@ void setup() {
   
   keyboardInput = new Controller();
   renderQueue = new RenderQueue(5);
-  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(bag)};
+  possibleItems = new ItemDictionary();
+  playerBag = new Bag();
+   Potion normalPotion = possibleItems.getPotion("Potion").copy();
+   playerBag.addPotion(normalPotion);
+   Potion superPotion = possibleItems.getPotion("Super Potion").copy();
+   playerBag.addPotion(superPotion);
+  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(playerBag)};
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
