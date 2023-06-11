@@ -45,6 +45,8 @@ public class Camera {
   public void render() {
     for (int r = 0; r < vision.length; ++r) {
       for (int c = 0; c < vision[r].length; ++c) {
+        if (vision[r][c] == 0) continue;
+        
         // find corresponding sprite
         boolean foundSprite = false;
         for (Sprite s : sprites) {
