@@ -22,7 +22,7 @@ public class Player extends MonoBehaviour {
       playerRight = getSprite("PLAYER_RIGHT");
       playerBack = getSprite("PLAYER_BACK");
       
-      party = new Pokemon[]{pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Squirtle"), pokedex.getPokemon("Bulbasaur"), pokedex.getPokemon("Charmander")};
+      party = new Pokemon[]{pokedex.getPokemon("Pikachu"), pokedex.getPokemon("Squirtle"), pokedex.getPokemon("Bulbasaur"), pokedex.getPokemon("Charmander"), null, null};
     } else {
       println("Error: instance of Player already exists");
     }
@@ -124,6 +124,14 @@ public class Player extends MonoBehaviour {
         }
       }
     }
+  }
+  
+  public int numPokemon() {
+    for (int i = 0; i < party.length; ++i) {
+      if (party[i] == null) return i;
+    }
+    
+    return party.length;
   }
 
     public void pause() {
