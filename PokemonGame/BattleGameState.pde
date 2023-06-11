@@ -123,7 +123,7 @@ public class BattleGameState extends GameState {
     /* set up battle options */
     battleOptions = new Button[]{
       new Button(
-        0, height-200, width, 100,
+        0, height-200, width-200, 100,
         "FIGHT",
         color(255, 255, 255),
         new Executable() {
@@ -134,7 +134,7 @@ public class BattleGameState extends GameState {
         }
       ),
       new Button(
-        0, height-100, width, 100,
+        0, height-100, width-200, 100,
         "RUN",
         color(255, 255, 255),
         new Executable() {
@@ -156,6 +156,66 @@ public class BattleGameState extends GameState {
           }
         }
       ),
+      new Button(
+        width-200, height-200, 200, 200,
+        "CATCH",
+        color(255,255,255),
+        new Executable() {
+          public void run() {
+            if (enemyPokemon.length > 1 || enemyName.indexOf("Wild") == -1) {
+              clearUI(battleOptions);
+              UISys.getScreenUI().add(
+                new DialogueBox(
+                  "Cannot catch another trainer's pokemon",
+                  new Executable() {
+                    public void run() {
+                      addUI(battleOptions);
+                    }
+                  }
+                )
+              );
+            } else if (playerBag.getPokeballs().size() == 0) {
+              clearUI(battleOptions);
+              UISys.getScreenUI().add(
+                new DialogueBox(
+                  "You don't have any pokeballs",
+                  new Executable() {
+                    public void run() {
+                      addUI(battleOptions);
+                    }
+                  }
+                )
+              );
+            } else if (player.numPokemon() == player.getPokemon().length) {
+              clearUI(battleOptions);
+              UISys.getScreenUI().add(
+                new DialogueBox(
+                  "You already have 6 pokemon",
+                  new Executable() {
+                    public void run() {
+                      addUI(battleOptions);
+                    }
+                  }
+                )
+              );
+            } else {
+              clearUI(battleOptions);
+              player.getPokemon()[player.numPokemon()] = enemyPokemon[enemyPokemonOut];
+              playerBag.getPokeballs().remove(0);
+              UISys.getScreenUI().add(
+                new DialogueBox(
+                  "Caught " + enemyPokemon[enemyPokemonOut].getName() + "!",
+                  new Executable() {
+                    public void run() {
+                      end();
+                    }
+                  }
+                )
+              );
+            }
+          }
+        }
+      )
     };
   }
   
