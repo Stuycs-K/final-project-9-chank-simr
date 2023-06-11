@@ -37,6 +37,8 @@ public class PokemonInMenu extends Button {
     image(spriteImage, x+30, y+20);
     
     /* WRITE POKEMON LEVEL */
+    
+    lifetime = max(lifetime-1, 0);
   }
 
   private void healthbar() {
