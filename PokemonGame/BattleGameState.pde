@@ -45,6 +45,16 @@ public class BattleGameState extends GameState {
   }
   
   public void draw() {
+    /* DRAW CURRENT POKEMONS OUT */
+    Pokemon enemy = enemyPokemon[enemyPokemonOut];
+    Pokemon playerPokemon = player.getPokemon()[playerPokemonOut];
+    
+    playerPokemon.getBackImage().render(camera.getRows() - playerPokemon.getBackImage().getHeight() + 2, -2);
+    enemy.getFrontImage().render(0, camera.getCols() - enemy.getFrontImage().getWidth());
+    
+    /* DRAW BG */
+    getSprite("BATTLE_BACKGROUND").render(0, 0);
+    
     playerHealth.setPokemon(player.getPokemon()[playerPokemonOut]);
     enemyHealth.setPokemon(enemyPokemon[enemyPokemonOut]);
     
@@ -112,7 +122,7 @@ public class BattleGameState extends GameState {
     /* set up battle options */
     battleOptions = new Button[]{
       new Button(
-        0, height-300, width, 200,
+        0, height-200, width, 100,
         "FIGHT",
         color(255, 255, 255),
         new Executable() {
@@ -174,7 +184,7 @@ public class BattleGameState extends GameState {
     gameState = GameState.DEFAULT;
   }
   
-  private void battleLoop() {
+  private void battleLoop() { 
     if (battleProgress % 2 == 0) {
       setupEffects = false;
       if (!renderingButtons) {

@@ -74,6 +74,9 @@ public class Camera {
   
   public int[][] getVision() { return vision; }
   
+  public int getRows() { return rows; }
+  public int getCols() { return cols; }
+  
   public String toString() {
     String str = "";
     for (int r = 0; r < vision.length; ++r) 

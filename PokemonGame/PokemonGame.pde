@@ -49,14 +49,15 @@ void setup() {
     new Sprite("assets/player_left.png", "PLAYER_LEFT", 1, 1, 0, -1),
     new Sprite("assets/player.png", "NPC", 1, 1, 0, -2),
     new Sprite("assets/tiles/wildgrass.png", "WILD_GRASS", 1, 1, 0, 0X0000FF),
-    new Sprite("assets/pokemon/pikachu_front.png", "PIKACHU_FRONT", 1, 1, 0, -1),
-    new Sprite("assets/pokemon/pikachu_back.png", "PIKACHU_BACK", 1, 1, 0, -1),
-    new Sprite("assets/pokemon/charmander_front.png", "CHARMANDER_FRONT", 1, 1, 0, -1),
-    new Sprite("assets/pokemon/charmander_back.png", "CHARMANDER_BACK", 1, 1, 0, -1),
-    new Sprite("assets/pokemon/squirtle_front.png", "SQUIRTLE_FRONT", 1, 1, 0, -1),
-    new Sprite("assets/pokemon/squirtle_back.png", "SQUIRTLE_BACK", 1, 1, 0, -1),
-    new Sprite("assets/pokemon/bulbasaur_front.png", "BULBASAUR_FRONT", 1, 1, 0, -1),
-    new Sprite("assets/pokemon/bulbasaur_back.png", "BULBASAUR_BACK", 1, 1, 0, -1),
+    new Sprite("assets/pokemon/pikachu_front.png", "PIKACHU_FRONT", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/pikachu_back.png", "PIKACHU_BACK", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/charmander_front.png", "CHARMANDER_FRONT", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/charmander_back.png", "CHARMANDER_BACK", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/squirtle_front.png", "SQUIRTLE_FRONT", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/squirtle_back.png", "SQUIRTLE_BACK", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/bulbasaur_front.png", "BULBASAUR_FRONT", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/bulbasaur_back.png", "BULBASAUR_BACK", 12, 12, 1, -1),
+    new Sprite("assets/battlebg.jpg", "BATTLE_BACKGROUND", width/TILE_WIDTH, height/TILE_WIDTH, 0, -1)
   }; // sprites stored in memory
   
   // pokedex
@@ -66,10 +67,10 @@ void setup() {
   renderQueue = new RenderQueue(5);
   possibleItems = new ItemDictionary();
   playerBag = new Bag();
-   Potion normalPotion = possibleItems.getPotion("Potion").copy();
-   playerBag.addPotion(normalPotion);
-   Potion superPotion = possibleItems.getPotion("Super Potion").copy();
-   playerBag.addPotion(superPotion);
+  Potion normalPotion = possibleItems.getPotion("Potion").copy();
+  playerBag.addPotion(normalPotion);
+  Potion superPotion = possibleItems.getPotion("Super Potion").copy();
+  playerBag.addPotion(superPotion);
   gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(playerBag)};
 
   /* INITIALIZE UI SYSTEM */
