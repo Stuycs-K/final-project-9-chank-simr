@@ -68,41 +68,7 @@ public class BagGameState extends GameState {
       String name = possibleItems.potions[i].getName();
       String desc = possibleItems.potions[i].getDescription();
       Potion curPotion = possibleItems.potions[i];
-      UISys.getScreenUI().add(
-        new ItemInMenu(
-        width/2-30, 180 + i* (50 + 20),
-        possibleItems.potions[i],
-        new Executable() {
-        public void run() {
-          if (UISys.getScreenUI().size()<9) {
-            if (playerBag.removePotion(name) == null) {
-              return;
-            } else {
-
-              DialogueBox dBox = new DialogueBox(
-                desc,
-                new Executable() {
-                public void run() {
-                  while (UISys.getScreenUI().size()>3) {
-                    UISys.getScreenUI().remove(UISys.getScreenUI().size()-1);
-                  }
-                  Pokemon[] party = player.getPokemon();
-                  for (int x=0; x<party.length; x++) {
-                    Pokemon curPokemon = party[x];
-                    createPokemon(x, curPokemon, curPotion);
-                  }
-                }
-              }
-              );
-              UISys.getScreenUI().add(dBox);
-            }
-          }
-        }
-      }
-      ,
-        count
-        )
-        );
+      createItemBox(i, count, name, desc, curPotion);
     }
 
     for (int i=0; i<possibleItems.pokeballs.length; i++) {
@@ -134,6 +100,45 @@ public class BagGameState extends GameState {
     while (UISys.getScreenUI().size()>6) {
       UISys.getScreenUI().remove(UISys.getScreenUI().size()-1);
     }
+  }
+  public void createItemBox(int i, int count, String name, String desc, Potion curPotion) {
+    UISys.getScreenUI().add(
+      new ItemInMenu(
+      width/2-30, 180 + i* (50 + 20),
+      possibleItems.potions[i],
+      new Executable() {
+      public void run() {
+        if (UISys.getScreenUI().size()<9) {
+          if (playerBag.removePotion(name) == null) {
+            return;
+          } else {
+            createDialogueBox(desc, curPotion);
+          }
+        }
+      }
+    }
+    ,
+      count
+      )
+      );
+  }
+  public void createDialogueBox(String desc, Potion curPotion) {
+    DialogueBox dBox = new DialogueBox(
+      desc,
+      new Executable() {
+      public void run() {
+        while (UISys.getScreenUI().size()>3) {
+          UISys.getScreenUI().remove(UISys.getScreenUI().size()-1);
+        }
+        Pokemon[] party = player.getPokemon();
+        for (int x=0; x<party.length; x++) {
+          Pokemon curPokemon = party[x];
+          createPokemon(x, curPokemon, curPotion);
+        }
+      }
+    }
+    );
+    UISys.getScreenUI().add(dBox);
   }
   public void createPokemon(int x, Pokemon pok, Potion pot) {
     UISys.getScreenUI().add(
