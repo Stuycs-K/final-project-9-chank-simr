@@ -2,7 +2,7 @@ public class Potion extends Item{
   private int healAmount;
   
   public Potion (Sprite i, String s, int info){
-    super(i, s, "A spray-type medicine for treating wounds. It restores the HP of one Pokemon by " + info " points.");
+    super(i, s, "A spray-type medicine for treating wounds. It restores the HP of one Pokemon by " + info + " points.");
     healAmount = info;
   }
   public int getHealAmount(){
