@@ -72,22 +72,6 @@ public class ShopGameState extends GameState {
       Pokeball curPokeball = possibleItems.pokeballs[i];
       createItemBox(i, curPokeball);
     }
-      /*
-      UISys.getScreenUI().add(
-        new ItemInMenu(
-        width/2-30, 390 + i* (50 + 20),
-        possibleItems.pokeballs[i],
-        new Executable() {
-        public void run() {
-        }
-      }
-      ,
-      
-        count
-        )
-        );
-    }
-    */
   }
 
   public void removeButtons() {
