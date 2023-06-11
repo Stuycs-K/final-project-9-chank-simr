@@ -64,6 +64,10 @@
 - created battle options (fight and run)
 - fixed forced wild encounter bug after consecutive wild encounters
 
+### 6/10/2023
+- added better map sprites
+- player sprites based on look direction (up, left, right, down)
+
 ## Kevin Chan
 
 ### 5/22/23
