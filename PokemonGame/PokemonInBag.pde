@@ -32,11 +32,13 @@ public class PokemonInBag extends Button{
     textSize(20);
     
     /* DRAW POKEMON SPRITE*/
-    PImage spriteImage = pokemon.getImage().getImage().copy();
+    PImage spriteImage = pokemon.getFrontImage().getImage().copy();
     spriteImage.resize(0, 40);
     image(spriteImage, x+5, y+5);    
     
     /* WRITE POKEMON LEVEL */
+    
+    lifetime = max(lifetime-1, 0);
   }
 
   private void healthbar() {

@@ -3,6 +3,8 @@ public class Button extends UI {
   private color c;
   private Executable onclick;
   
+  protected int lifetime = 10; // last for at least this many frames
+  
   public Button(int x, int y, int w, int h, String text, color c, Executable onclick){
     super(x, y, w, h);
     this.text = text;
@@ -16,9 +18,13 @@ public class Button extends UI {
     fill(0);
     // center text
     text(text, x+10, y+(h/2)-10, w-10, h-10);
+    lifetime = max(lifetime-1, 0);
   }
   
   public void onClick() {
-    onclick.run();
+    if (lifetime == 0) {
+      onclick.run();
+      lifetime = 10;
+    }
   }
 }

@@ -28,7 +28,7 @@ public class DefaultGameState extends GameState {
     */
     map = new GameBoard("map");
     
-    player = new Player(2, 2);
+    player = new Player(3, 3);
     gameObjects.add(player);
     
     //NPC1

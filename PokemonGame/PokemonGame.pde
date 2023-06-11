@@ -1,5 +1,3 @@
-import java.util.PriorityQueue;
-
 /*
 This is a recreation of Pokemon in Processing
  Recreation of Unity APIs in Processing
@@ -15,6 +13,7 @@ RenderQueue renderQueue;
 Controller keyboardInput;
 Player player;
 Bag playerBag;
+int money;
 
 ItemDictionary possibleItems;
 
@@ -34,11 +33,12 @@ color colPOISON = color (160, 32, 240);
 color colFIRE = color (238, 75, 43);
 
 void setup() {
-  size(1250, 950);
+  size(1050, 850);
   frameRate(30);
   
   /* Sprite(resource_url, name, width, height, zIndex, hex) */
   sprites = new Sprite[]{
+    new Sprite("assets/missing.png", "MISSING", 1, 1, 0, -1),
     new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, 0, 0X00FF00),
     new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
     new Sprite("assets/player_front.png", "PLAYER_FRONT", 1, 1, 0, -1),
@@ -46,8 +46,20 @@ void setup() {
     new Sprite("assets/player_back.png", "PLAYER_BACK", 1, 1, 0, -1),
     new Sprite("assets/player_right.png", "PLAYER_RIGHT", 1, 1, 0, -1),
     new Sprite("assets/player_left.png", "PLAYER_LEFT", 1, 1, 0, -1),
-    new Sprite("assets/player.png", "NPC", 1, 1, 0, -2),
-    new Sprite("assets/tiles/wildgrass.png", "WILD_GRASS", 1, 1, 0, 0X0000FF)
+    new Sprite("assets/npc_front.png", "NPC_FRONT", 1, 1, 0, -2),
+    new Sprite("assets/npc_back.png", "NPC_BACK", 1, 1, 0, -3),
+    new Sprite("assets/npc_left.png", "NPC_LEFT", 1, 1, 0, -4),
+    new Sprite("assets/npc_right.png", "NPC_RIGHT", 1, 1, 0, -5),
+    new Sprite("assets/tiles/wildgrass.png", "WILD_GRASS", 1, 1, 0, 0X0000FF),
+    new Sprite("assets/pokemon/pikachu_front.png", "PIKACHU_FRONT", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/pikachu_back.png", "PIKACHU_BACK", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/charmander_front.png", "CHARMANDER_FRONT", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/charmander_back.png", "CHARMANDER_BACK", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/squirtle_front.png", "SQUIRTLE_FRONT", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/squirtle_back.png", "SQUIRTLE_BACK", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/bulbasaur_front.png", "BULBASAUR_FRONT", 12, 12, 1, -1),
+    new Sprite("assets/pokemon/bulbasaur_back.png", "BULBASAUR_BACK", 12, 12, 1, -1),
+    new Sprite("assets/battlebg.jpg", "BATTLE_BACKGROUND", width/TILE_WIDTH, height/TILE_WIDTH, 0, -1)
   }; // sprites stored in memory
   
   // pokedex
@@ -61,7 +73,8 @@ void setup() {
    playerBag.addPotion(normalPotion);
    Potion superPotion = possibleItems.getPotion("Super Potion").copy();
    playerBag.addPotion(superPotion);
-  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(playerBag)};
+   money = 1000;
+  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(playerBag), new ShopGameState()};
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
@@ -161,7 +174,7 @@ Sprite getSprite(String n) {
     if (sprites[i].getName().equals(n)) return sprites[i];
   }
 
-  return null;
+  return sprites[0];
 }
 
 void mouseClicked() {

@@ -4,6 +4,7 @@ public class GameState {
   public static final int MENU = 2;
   public static final int POKEMONSTATS = 3;
   public static final int BAG = 4;
+  public static final int SHOP = 5;
 
   protected ArrayList<MonoBehaviour> gameObjects;
 

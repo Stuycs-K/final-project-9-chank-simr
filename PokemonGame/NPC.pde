@@ -2,23 +2,38 @@ public class NPC extends MonoBehaviour {
   private String[] dialogue;
   private Pokemon[] NPCPokemon;
   boolean canBattle;
-  private Sprite NPCSprite;
+  private Sprite npcFront;
+  private Sprite npcBack;
+  private Sprite npcLeft;
+  private Sprite npcRight;
+  private int[] lookVector;
+  
   public NPC(String[] messages, Pokemon[] pokemonToBattle, int startingRow, int startingCol) {
     super(startingRow, startingCol);
 
-    NPCSprite = getSprite("NPC");
+    npcFront = getSprite("NPC_FRONT");
+    npcBack = getSprite("NPC_BACK");
+    npcLeft = getSprite("NPC_LEFT");
+    npcRight = getSprite("NPC_RIGHT");
+    
+    lookVector = new int[]{1, 0};
+    
     dialogue = messages;
     NPCPokemon = pokemonToBattle;
     canBattle = true;
-    map.tiles[startingRow][startingCol] = NPCSprite.getHex();
   }
   public NPC(String[] messages, int startingRow, int startingCol) {
     super(startingRow, startingCol);
 
-    NPCSprite = getSprite("NPC");
+    npcFront = getSprite("NPC_FRONT");
+    npcBack = getSprite("NPC_BACK");
+    npcLeft = getSprite("NPC_LEFT");
+    npcRight = getSprite("NPC_RIGHT");
+    
+    lookVector = new int[]{1, 0};
+    
     dialogue = messages;
     canBattle = false;
-    map.tiles[startingRow][startingCol] = NPCSprite.getHex();
   }
   public String[] getDialogue() {
     return dialogue;
@@ -30,7 +45,15 @@ public class NPC extends MonoBehaviour {
     return canBattle;
   }
   
+  public void render() {
+    getLookSprite().renderAbsolute(row, col);
+  }
+  
   public void interact() {
+    /* LOOK TOWARDS PLAYER */
+    lookVector[0] = -player.getLookVector()[0];
+    lookVector[1] = -player.getLookVector()[1];
+    
     DialogueBox dBox = new DialogueBox(
       dialogue[dialogue.length-1],
       new Executable() {
@@ -55,5 +78,21 @@ public class NPC extends MonoBehaviour {
     }
     
     UISys.getScreenUI().add(dBox);
+  }
+  
+  public Sprite getLookSprite() {
+    Sprite currentSprite = npcFront;
+    
+    if (lookVector[0] == 1 && lookVector[1] == 0) {
+      currentSprite = npcFront;
+    } else if (lookVector[0] == -1 && lookVector[1] == 0) {
+      currentSprite = npcBack;
+    } else if (lookVector[0] == 0 && lookVector[1] == 1) {
+      currentSprite = npcRight;
+    } else if (lookVector[0] == 0 && lookVector[1] == -1) {
+      currentSprite = npcLeft;
+    }
+    
+    return currentSprite;
   }
 }

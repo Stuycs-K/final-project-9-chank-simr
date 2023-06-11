@@ -63,23 +63,23 @@ public class Player extends MonoBehaviour {
     
     /* LOOK CODE */
     if (keyboardInput.isPressed(Controller.PUP)) {
-      lookVector[0] = max(lookVector[0] - 1, -1);
+      lookVector[0] = -1;
       lookVector[1] = 0;
       moving = true;
     }
     if (keyboardInput.isPressed(Controller.PLEFT)) {
       lookVector[0] = 0;
-      lookVector[1] = max(lookVector[1] - 1, -1);
+      lookVector[1] = -1;
       moving = true;
     }
     if (keyboardInput.isPressed(Controller.PDOWN)) {
-      lookVector[0] = min(lookVector[0] + 1, 1);
+      lookVector[0] = 1;
       lookVector[1] = 0;
       moving = true;
     }
     if (keyboardInput.isPressed(Controller.PRIGHT)) {
       lookVector[0] = 0;
-      lookVector[1] = min(lookVector[1] + 1, 1);
+      lookVector[1] = 1;
       moving = true;
     }
     
