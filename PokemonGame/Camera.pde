@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class Camera {
   private int[][] vision;
   private int centerRow;
@@ -46,7 +48,6 @@ public class Camera {
     for (int r = 0; r < vision.length; ++r) {
       for (int c = 0; c < vision[r].length; ++c) {
         if (vision[r][c] == 0) continue;
-        
         // find corresponding sprite
         boolean foundSprite = false;
         for (Sprite s : sprites) {
@@ -60,6 +61,7 @@ public class Camera {
         
         if (!foundSprite) {
           // draw missing texture with filler
+          println("MISSING SPRITE");
         }
       }
     }
@@ -71,4 +73,11 @@ public class Camera {
   }
   
   public int[][] getVision() { return vision; }
+  
+  public String toString() {
+    String str = "";
+    for (int r = 0; r < vision.length; ++r) 
+      str += Arrays.toString(vision[r]) + "\n";
+    return "{\n" + str + "}";
+  }
 }

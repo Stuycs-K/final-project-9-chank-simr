@@ -39,6 +39,7 @@ void setup() {
   
   /* Sprite(resource_url, name, width, height, zIndex, hex) */
   sprites = new Sprite[]{
+    new Sprite("assets/missing.png", "MISSING", 1, 1, 0, -1),
     new Sprite("assets/tiles/grass.png", "GRASS_FLOOR", 1, 1, 0, 0X00FF00),
     new Sprite("assets/tiles/path.png", "PATH", 1, 1, 0, 0XFFFF00),
     new Sprite("assets/player_front.png", "PLAYER_FRONT", 1, 1, 0, -1),
@@ -47,7 +48,15 @@ void setup() {
     new Sprite("assets/player_right.png", "PLAYER_RIGHT", 1, 1, 0, -1),
     new Sprite("assets/player_left.png", "PLAYER_LEFT", 1, 1, 0, -1),
     new Sprite("assets/player.png", "NPC", 1, 1, 0, -2),
-    new Sprite("assets/tiles/wildgrass.png", "WILD_GRASS", 1, 1, 0, 0X0000FF)
+    new Sprite("assets/tiles/wildgrass.png", "WILD_GRASS", 1, 1, 0, 0X0000FF),
+    new Sprite("assets/pokemon/pikachu_front.png", "PIKACHU_FRONT", 1, 1, 0, -1),
+    new Sprite("assets/pokemon/pikachu_back.png", "PIKACHU_BACK", 1, 1, 0, -1),
+    new Sprite("assets/pokemon/charmander_front.png", "CHARMANDER_FRONT", 1, 1, 0, -1),
+    new Sprite("assets/pokemon/charmander_back.png", "CHARMANDER_BACK", 1, 1, 0, -1),
+    new Sprite("assets/pokemon/squirtle_front.png", "SQUIRTLE_FRONT", 1, 1, 0, -1),
+    new Sprite("assets/pokemon/squirtle_back.png", "SQUIRTLE_BACK", 1, 1, 0, -1),
+    new Sprite("assets/pokemon/bulbasaur_front.png", "BULBASAUR_FRONT", 1, 1, 0, -1),
+    new Sprite("assets/pokemon/bulbasaur_back.png", "BULBASAUR_BACK", 1, 1, 0, -1),
   }; // sprites stored in memory
   
   // pokedex
@@ -161,7 +170,7 @@ Sprite getSprite(String n) {
     if (sprites[i].getName().equals(n)) return sprites[i];
   }
 
-  return null;
+  return sprites[0];
 }
 
 void mouseClicked() {
