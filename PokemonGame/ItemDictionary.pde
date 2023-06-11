@@ -4,13 +4,13 @@ public class ItemDictionary {
 
   public ItemDictionary() {
     potions = new Potion[]{
-      new Potion(getSprite("PLAYER"), "Potion", 20),
-      new Potion(getSprite("PLAYER"), "Super Potion", 50),
-      new Potion(getSprite("PLAYER"), "Hyper Potion", 200)
+      new Potion(getSprite("POTION"), "Potion", 20),
+      new Potion(getSprite("SUPER_POTION"), "Super Potion", 50),
+      new Potion(getSprite("HYPER_POTION"), "Hyper Potion", 200)
     };
     pokeballs = new Pokeball[] {
-      new Pokeball(getSprite("PLAYER"), "Poke Ball", "A device for catching wild Pokemon. It's thrown like a ball at a Pokemon, comfortably encapsulating its target.", 50),
-      new Pokeball(getSprite("PLAYER"), "Great Ball", "A good, high-performance Poke Ball that provides a higher catch rate than a standard Poke Ball.", 75)
+      new Pokeball(getSprite("POKEBALL"), "Poke Ball", "A device for catching wild Pokemon. It's thrown like a ball at a Pokemon, comfortably encapsulating its target.", 50),
+      //new Pokeball(getSprite("PLAYER"), "Great Ball", "A good, high-performance Poke Ball that provides a higher catch rate than a standard Poke Ball.", 75)
     };
   }
   
