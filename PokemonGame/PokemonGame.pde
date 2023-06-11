@@ -34,7 +34,7 @@ color colPOISON = color (160, 32, 240);
 color colFIRE = color (238, 75, 43);
 
 void setup() {
-  size(1250, 950);
+  size(1050, 850);
   frameRate(30);
   
   /* Sprite(resource_url, name, width, height, zIndex, hex) */
