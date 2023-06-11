@@ -59,6 +59,11 @@
 - created wild pokemon encounters when walking on "wild_grass"
 - fixed BattleGameState pokemon switching/rendering bugs.
 
+### 6/9/2023
+
+- created battle options (fight and run)
+- fixed forced wild encounter bug after consecutive wild encounters
+
 ## Kevin Chan
 
 ### 5/22/23

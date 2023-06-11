@@ -42,7 +42,6 @@ public class Player extends MonoBehaviour {
   public void move() {
     if (moving || pause) return;
     
-
     /* LOOK CODE */
     if (keyboardInput.isPressed(Controller.PUP)) {
       lookVector[0] = max(lookVector[0] - 1, -1);
@@ -65,14 +64,7 @@ public class Player extends MonoBehaviour {
       moving = true;
     }
     
-    // wild pokemon battle if in tall grass
-    if (map.getTileSprite(row, col).getName().equals("WILD_GRASS")) {
-      if (Math.random() < 0.08) {
-        moving = false;
-        Pokemon randomPokemon = pokedex.getRandomPokemon();
-        ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ randomPokemon }, "Wild " + randomPokemon.getName());
-      }
-    }
+    if (moving && attemptRandomBattle()) return;
     
     // collision detection)
     if (moving) {
@@ -88,6 +80,19 @@ public class Player extends MonoBehaviour {
         }
       }
     }
+  }
+  private boolean attemptRandomBattle() {
+    // wild pokemon battle if in tall grass
+    if (map.getTileSprite(row, col).getName().equals("WILD_GRASS")) {
+      if (Math.random() < 0.08) {
+        moving = false;
+        Pokemon randomPokemon = pokedex.getRandomPokemon();
+        ((BattleGameState) gameStates[GameState.BATTLE]).start(new Pokemon[]{ randomPokemon }, "Wild " + randomPokemon.getName());
+        return true;
+      }
+    }
+    
+    return false;
   }
   private void interact() {
     /* CHECK IF PLAYER IS NEXT TO NPC, THEN CHECK IF PLAYER IS LOOKING AT NPC, IF SO, INTERACT WITH NPC */

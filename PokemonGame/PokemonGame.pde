@@ -14,7 +14,9 @@ RenderQueue renderQueue;
 
 Controller keyboardInput;
 Player player;
-Bag bag = new Bag();
+Bag playerBag;
+
+ItemDictionary possibleItems;
 
 /* DEFAULT GAME STATE VARIABLES */
 Camera camera;
@@ -32,7 +34,7 @@ color colPOISON = color (160, 32, 240);
 color colFIRE = color (238, 75, 43);
 
 void setup() {
-  size(1050, 650);
+  size(1250, 950);
   frameRate(30);
   
   /* Sprite(resource_url, name, width, height, zIndex, hex) */
@@ -49,7 +51,13 @@ void setup() {
   
   keyboardInput = new Controller();
   renderQueue = new RenderQueue(5);
-  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(bag)};
+  possibleItems = new ItemDictionary();
+  playerBag = new Bag();
+   Potion normalPotion = possibleItems.getPotion("Potion").copy();
+   playerBag.addPotion(normalPotion);
+   Potion superPotion = possibleItems.getPotion("Super Potion").copy();
+   playerBag.addPotion(superPotion);
+  gameStates = new GameState[]{new DefaultGameState(), new BattleGameState(), new MenuGameState(), new PokemonStatsGameState(player.getPokemon()[0]), new BagGameState(playerBag)};
 
   /* INITIALIZE UI SYSTEM */
   UISys = new UISystem();
