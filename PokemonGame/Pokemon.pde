@@ -1,5 +1,6 @@
 public class Pokemon {
-  private Sprite image;
+  private Sprite frontImage;
+  private Sprite backImage;
   private String name;
   private String type;
   private int xp;
@@ -12,8 +13,9 @@ public class Pokemon {
   private ArrayList <Move> learnableMoves;
   
   //Constructor for Pokemon
-  public Pokemon(Sprite image, String name, int attack, int defense, int speed, int maxHealth, Move[] pokemonMoves) {
-    this.image = image;
+  public Pokemon(String name, int attack, int defense, int speed, int maxHealth, Move[] pokemonMoves) {
+    this.frontImage = getSprite(name.toUpperCase() + "_FRONT");
+    this.backImage = getSprite(name.toUpperCase() + "_BACK");
     this.name = name;
     this.attack = attack;
     this.defense = defense;
@@ -35,8 +37,11 @@ public class Pokemon {
   }
   
   //Accessor methods for Pokemon
-  public Sprite getImage() {
-    return image;
+  public Sprite getFrontImage() {
+    return frontImage;
+  }
+  public Sprite getBackImage() {
+    return backImage;
   }
   public String getName() {
     return name;
@@ -108,6 +113,6 @@ public class Pokemon {
   }
   
   public Pokemon copy() {
-    return new Pokemon(image, name, attack, defense, speed, maxHealth, pokemonMoves);
+    return new Pokemon(name, attack, defense, speed, maxHealth, pokemonMoves);
   }
 }

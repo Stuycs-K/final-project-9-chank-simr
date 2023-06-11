@@ -24,6 +24,15 @@ public class Sprite {
   public void render(float r, float c) {
     renderQueue.add(new Render(r, c, this));
   }
+  /* RENDER ABSOLUTE BASED ON PLAYER LOCATION */
+  public void renderAbsolute(float r, float c) {
+     int playerRow = player.getRow();
+     int playerCol = player.getCol();
+     int centerRow = camera.getRows()/2;
+     int centerCol = camera.getCols()/2;
+     
+     renderQueue.add(new Render(r-playerRow+centerRow- ((1 - player.getWalkProgress()) * player.getLookVector()[0]), c-playerCol+centerCol- ((1 - player.getWalkProgress()) * player.getLookVector()[1]), this));
+  }
   
   public String getName() { return name; }
   public int getWidth() { return w; }

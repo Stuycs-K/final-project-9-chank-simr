@@ -68,6 +68,13 @@
 - added better map sprites
 - player sprites based on look direction (up, left, right, down)
 
+### 6/11/2023
+- added battle background
+- added button minimum life span
+- added npc sprites + look direction
+- added pokemon sprites
+- created player relative rendering in Sprite class.
+
 ## Kevin Chan
 
 ### 5/22/23

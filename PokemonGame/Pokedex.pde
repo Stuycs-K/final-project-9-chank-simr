@@ -25,10 +25,10 @@ public class Pokedex {
       new Move("Flamethrower", "FIRE", 35),
     };
     pokemon = new Pokemon[]{
-      new Pokemon(getSprite("PLAYER"), "Pikachu", 50, 50, 50, 100, new Move[]{ getMove("Thunderbolt"), getMove("Lightning"), getMove("Quick Attack"), getMove("Discharge") }),
-      new Pokemon(getSprite("PLAYER"), "Squirtle", 50, 50, 50, 100, new Move[]{ getMove("Tackle"), getMove("Water Gun"), getMove("Water Pulse"), getMove("Rain Dance") }),
-      new Pokemon(getSprite("PLAYER"), "Bulbasaur", 50, 50, 50, 100, new Move[]{ getMove("Growl"), getMove("Vine Whip"), getMove("Leech Seed"), getMove("Poison Powder") }),
-      new Pokemon(getSprite("PLAYER"), "Charmander", 50, 50, 50, 100, new Move[]{ getMove("Scratch"), getMove("Ember"), getMove("Fire Fang"), getMove("Flamethrower") }),
+      new Pokemon("Pikachu", 50, 50, 50, 100, new Move[]{ getMove("Thunderbolt"), getMove("Lightning"), getMove("Quick Attack"), getMove("Discharge") }),
+      new Pokemon("Squirtle", 50, 50, 50, 100, new Move[]{ getMove("Tackle"), getMove("Water Gun"), getMove("Water Pulse"), getMove("Rain Dance") }),
+      new Pokemon("Bulbasaur", 50, 50, 50, 100, new Move[]{ getMove("Growl"), getMove("Vine Whip"), getMove("Leech Seed"), getMove("Poison Powder") }),
+      new Pokemon("Charmander", 50, 50, 50, 100, new Move[]{ getMove("Scratch"), getMove("Ember"), getMove("Fire Fang"), getMove("Flamethrower") }),
     };
   }
   
