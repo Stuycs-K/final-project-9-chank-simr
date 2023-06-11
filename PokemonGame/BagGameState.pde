@@ -134,7 +134,7 @@ public class BagGameState extends GameState {
           UISys.getScreenUI().remove(UISys.getScreenUI().size()-1);
         }
         Pokemon[] party = player.getPokemon();
-        for (int x=0; x<party.length; x++) {
+        for (int x=0; x<player.numPokemon(); x++) {
           Pokemon curPokemon = party[x];
           createPokemon(x, curPokemon, curPotion, name);
         }
