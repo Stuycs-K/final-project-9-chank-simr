@@ -74,6 +74,7 @@
 - added npc sprites + look direction
 - added pokemon sprites
 - created player relative rendering in Sprite class.
+- created catching pokemon
 
 ## Kevin Chan
 
