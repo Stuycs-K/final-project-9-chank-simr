@@ -152,3 +152,20 @@
 
 - created ShopGameState, playerMoney, and the ability to buy items
 - added Sprites for all items and other images in Shop and Item
+
+### Dev Log
+
+### Working Features
+- Walking around a 2D Map
+- Interacting with an NPC
+- Pokémon battles against an NPC
+- Pokémon battles against wild Pokémon (including ability to fight and catch them, as well as to run away)
+- A Menu, which contain's the player's item bag and a display of the player's current Pokemon.
+- A shop to purchase more items
+- Potions to heal your pokemon.
+
+### Broken Features/Bugs
+- none
+
+### Content resources that we found helpful
+- none
