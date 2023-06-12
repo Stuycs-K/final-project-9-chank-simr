@@ -20,8 +20,8 @@ Our demo game features mechanics such as:
 - A shop to purchase more items
 - Potions to heal your pokemon.
 
-We created a Game Manager, GameStates (default, battle, menu), UI system, player and NPC classes, and Pokémon. Many of our classes inherit from a "Monobehaviour" class which gives our child classes access to processing
-We also have parent classes such as Monobehaviour for UI objects (dialogue boxes, buttons).
+We created a Game Manager, GameStates (default, battle, menu), UI system, player and NPC classes, and Pokémon. Many of our classes inherit from a "Monobehaviour" class which gives our child classes access to processing functions.
+We also have parent classes such as "UI" for UI objects (dialogue boxes, buttons, healthbars).
 ## Instructions
 - Click on the game window in order to focus the screen.
 ### Movement
